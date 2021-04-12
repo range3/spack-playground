@@ -1,0 +1,87 @@
+format:
+  autosort: true
+
+parse:
+  additional_commands:
+    install_basic_package_files:
+      pargs: 1+
+      flags:
+        - ARCH_INDEPENDENT
+        - NO_EXPORT
+        - NO_SET_AND_CHECK_MACRO
+        - NO_CHECK_REQUIRED_COMPONENTS_MACRO
+      kwargs:
+        VERSION: "*"
+        COMPATIBILITY: "*"
+        VARS_PREFIX: "*"
+        EXPORT: "*"
+        EXPORT_DESTINATION: "*"
+        INSTALL_DESTINATION: "*"
+        NAMESPACE: "*"
+        EXTRA_PATH_VARS_SUFFIX: "*"
+        CONFIG_TEMPLATE: "*"
+        UPPERCASE_FILENAMES: "*"
+        DEPENDENCIES: "*"
+        PRIVATE_DEPENDENCIES: "*"
+        INCLUDE_FILE: "*"
+        INCLUDE_CONTENT: "*"
+        COMPONENT: "*"
+    add_install_rpath_support:
+      pargs: 1+
+      flags:
+        - USE_LINK_PATH
+      kwargs:
+        BIN_DIRS: "*"
+        LIB_DIRS: "*"
+        INSTALL_NAME_DIR: "*"
+        DEPENDS: "*"
+    cpmaddpackage:
+      pargs:
+        nargs: '*'
+        flags: []
+      spelling: CPMAddPackage
+      kwargs: &cpmaddpackagekwargs
+        NAME: 1
+        FORCE: 1
+        VERSION: 1
+        GIT_TAG: 1
+        DOWNLOAD_ONLY: 1
+        GITHUB_REPOSITORY: 1
+        GITLAB_REPOSITORY: 1
+        GIT_REPOSITORY: 1
+        SVN_REPOSITORY: 1
+        SVN_REVISION: 1
+        SOURCE_DIR: 1
+        DOWNLOAD_COMMAND: 1
+        FIND_PACKAGE_ARGUMENTS: 1
+        NO_CACHE: 1
+        GIT_SHALLOW: 1
+        URL: 1
+        URL_HASH: 1
+        URL_MD5: 1
+        DOWNLOAD_NAME: 1
+        DOWNLOAD_NO_EXTRACT: 1
+        HTTP_USERNAME: 1
+        HTTP_PASSWORD: 1
+        OPTIONS: +
+    cpmfindpackage:
+      pargs:
+        nargs: '*'
+        flags: []
+      spelling: CPMFindPackage
+      kwargs: *cpmaddpackagekwargs
+    packageproject:
+      pargs:
+        nargs: '*'
+        flags: []
+      spelling: packageProject
+      kwargs:
+        NAME: 1
+        VERSION: 1
+        NAMESPACE: 1
+        INCLUDE_DIR: 1
+        INCLUDE_DESTINATION: 1
+        BINARY_DIR: 1
+        COMPATIBILITY: 1
+        VERSION_HEADER: 1
+        DEPENDENCIES: +

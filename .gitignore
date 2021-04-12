@@ -1,0 +1,8 @@
+/build*
+/install*
+/.cache
+/compile_commands.json
+.envrc
+
+.spack-env
+/envs/*/loads

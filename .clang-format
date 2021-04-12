@@ -1,0 +1,5 @@
+---
+Language: Cpp
+# possible values: LLVM Google Chromium Mozilla WebKit Microsoft GNU
+BasedOnStyle: Chromium
+...
