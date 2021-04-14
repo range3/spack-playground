@@ -22,6 +22,8 @@
 		"ms-vscode.cmake-tools",
 		"cheshirekow.cmake-format",
 		"redhat.vscode-yaml",
+		"eamodio.gitlens",
+		"pascalsenn.keyboard-quickfix",
 	],
 
 	// Use 'forwardPorts' to make a list of ports inside the container available locally.

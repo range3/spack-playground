@@ -1,6 +1,4 @@
 packages:
-  all:
-    compiler: [clang, gcc, intel, pgi, xl, nag, fj, aocc]
   bash:
     externals:
     - spec: bash@5.0.17
