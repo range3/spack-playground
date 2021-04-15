@@ -1,5 +1,5 @@
 function cmake_config() {
-  BUILD_TYPE=${1:-Release}
+  BUILD_TYPE=${1:-RelWithDebInfo}
   PROFILE=${2:-default}
 
   case "$PROFILE" in
