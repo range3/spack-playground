@@ -1,0 +1,3 @@
+[submodule "extern/mochi-spack-packages"]
+	path = extern/mochi-spack-packages
+	url = https://github.com/mochi-hpc/mochi-spack-packages.git

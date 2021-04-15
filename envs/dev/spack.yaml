@@ -9,7 +9,7 @@ spack:
   view: true
   packages:
     all:
-      compiler: [gcc]
+      compiler: [gcc, clang]
     cmake:
       externals:
       - spec: cmake@3.16.3
@@ -21,4 +21,4 @@ spack:
         prefix: /
       buildable: false
   repos:
-  - /home/vscode/.cache/spack/var/spack/repos/mochi-spack-packages
+  - /workspaces/spack-playground/extern/mochi-spack-packages
