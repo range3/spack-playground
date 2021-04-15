@@ -17,8 +17,16 @@
    "spec": "py-pyyaml"
   },
   {
-   "hash": "sbk6c5m6kl5oaa5lkcxqhiuvcb3dy5fs",
+   "hash": "fmbwz7a2wwmlzbqlww7cpxj2l3wpzgug",
    "spec": "mochi-thallium"
+  },
+  {
+   "hash": "l6qyee2vbuepsdbars6lkmjltdl33nw6",
+   "spec": "mercury+bmi"
+  },
+  {
+   "hash": "edmwfjgukm6jrhc5dq3suzwhdo4nbtsi",
+   "spec": "libfabric fabrics=rxm,sockets,tcp"
   }
  ],
  "concrete_specs": {
@@ -1800,7 +1808,7 @@
     "hash": "ssrc42zl6tfvsph6cmponywb7apuw6am"
    }
   },
-  "sbk6c5m6kl5oaa5lkcxqhiuvcb3dy5fs": {
+  "fmbwz7a2wwmlzbqlww7cpxj2l3wpzgug": {
    "mochi-thallium": {
     "version": "0.8.4",
     "arch": {
@@ -1870,7 +1878,7 @@
       ]
      },
      "mochi-margo": {
-      "hash": "lxo2t2t3xnbi46bstpjm4ahhbju4jmmu",
+      "hash": "h7vwjjqmfard3hcbx5beh6gth5vlcyra",
       "type": [
        "build",
        "link"
@@ -1883,7 +1891,7 @@
       ]
      }
     },
-    "hash": "qt7muttldshpzumpmfat3zmgk5kkty4k"
+    "hash": "y3piuicagqc3id4gkc5xx2uzcupta6f4"
    }
   },
   "am5z5so22444cxw7ulrvat4ly7m2ygcr": {
@@ -1963,7 +1971,7 @@
     "hash": "ebju5lbyh6dbcoxdogudfa6vkinsu6d4"
    }
   },
-  "lxo2t2t3xnbi46bstpjm4ahhbju4jmmu": {
+  "h7vwjjqmfard3hcbx5beh6gth5vlcyra": {
    "mochi-margo": {
     "version": "0.9.4",
     "arch": {
@@ -2055,7 +2063,7 @@
       ]
      },
      "mercury": {
-      "hash": "6wwkrojnnohqz4uvcn33fmxi4hxuteh2",
+      "hash": "l6qyee2vbuepsdbars6lkmjltdl33nw6",
       "type": [
        "build",
        "link",
@@ -2069,7 +2077,7 @@
       ]
      }
     },
-    "hash": "zptghywtbk2zjaulexhtkl42nuesnics"
+    "hash": "rst5g4z7asafbhezb7xyx5xer3mrj7xo"
    }
   },
   "4pe6nanjluv22gre32a6yuyrso7amu32": {
@@ -2663,7 +2671,7 @@
     "hash": "nijcyvdj44d7zm4mgqj3fyecnpb7vihi"
    }
   },
-  "6wwkrojnnohqz4uvcn33fmxi4hxuteh2": {
+  "l6qyee2vbuepsdbars6lkmjltdl33nw6": {
    "mercury": {
     "version": "2.0.1rc2",
     "arch": {
@@ -2708,7 +2716,7 @@
     },
     "namespace": "mochi",
     "parameters": {
-     "bmi": false,
+     "bmi": true,
      "boostsys": true,
      "build_type": "RelWithDebInfo",
      "cci": false,
@@ -2728,6 +2736,13 @@
      "ldlibs": []
     },
     "dependencies": {
+     "bmi": {
+      "hash": "kg3lqgyvm4vjpxktppoxrhkf5v5ugsvg",
+      "type": [
+       "build",
+       "link"
+      ]
+     },
      "boost": {
       "hash": "mhqcdfgyylnhqsdfdhibblclt64joumx",
       "type": [
@@ -2742,14 +2757,83 @@
       ]
      },
      "libfabric": {
-      "hash": "7xdtqah4i5m4skp3wg6uhwqwqsgzbrwl",
+      "hash": "edmwfjgukm6jrhc5dq3suzwhdo4nbtsi",
       "type": [
        "build",
        "link"
       ]
      }
     },
-    "hash": "hlprhdfe6qmvrmmrv5dm43um5sv33g46"
+    "hash": "n5lxdbvsceunvlirskyxiaez32334ifn"
+   }
+  },
+  "kg3lqgyvm4vjpxktppoxrhkf5v5ugsvg": {
+   "bmi": {
+    "version": "main",
+    "arch": {
+     "platform": "linux",
+     "platform_os": "ubuntu20.04",
+     "target": {
+      "name": "skylake",
+      "vendor": "GenuineIntel",
+      "features": [
+       "adx",
+       "aes",
+       "avx",
+       "avx2",
+       "bmi1",
+       "bmi2",
+       "clflushopt",
+       "f16c",
+       "fma",
+       "mmx",
+       "movbe",
+       "pclmulqdq",
+       "popcnt",
+       "rdrand",
+       "rdseed",
+       "sse",
+       "sse2",
+       "sse4_1",
+       "sse4_2",
+       "ssse3",
+       "xsavec",
+       "xsaveopt"
+      ],
+      "generation": 0,
+      "parents": [
+       "broadwell"
+      ]
+     }
+    },
+    "compiler": {
+     "name": "gcc",
+     "version": "9.3.0"
+    },
+    "namespace": "builtin",
+    "parameters": {
+     "cflags": [],
+     "cppflags": [],
+     "cxxflags": [],
+     "fflags": [],
+     "ldflags": [],
+     "ldlibs": []
+    },
+    "dependencies": {
+     "autoconf": {
+      "hash": "ww7rnd3boyxa52sqd5zecjc3wwz62oo2",
+      "type": [
+       "build"
+      ]
+     },
+     "automake": {
+      "hash": "cywc3y7l7cq3a6b7itlj5krhzhahoox7",
+      "type": [
+       "build"
+      ]
+     }
+    },
+    "hash": "cjikaxoe7rfyan57t7nif4qixueescum"
    }
   },
   "mhqcdfgyylnhqsdfdhibblclt64joumx": {
@@ -2867,7 +2951,7 @@
     "hash": "mhqcdfgyylnhqsdfdhibblclt64joumx"
    }
   },
-  "7xdtqah4i5m4skp3wg6uhwqwqsgzbrwl": {
+  "edmwfjgukm6jrhc5dq3suzwhdo4nbtsi": {
    "libfabric": {
     "version": "1.11.1",
     "arch": {
@@ -2914,9 +2998,9 @@
     "parameters": {
      "disable-spinlocks": false,
      "fabrics": [
+      "rxm",
       "sockets",
-      "tcp",
-      "udp"
+      "tcp"
      ],
      "kdreg": false,
      "cflags": [],
@@ -2926,7 +3010,7 @@
      "ldflags": [],
      "ldlibs": []
     },
-    "hash": "7xdtqah4i5m4skp3wg6uhwqwqsgzbrwl"
+    "hash": "edmwfjgukm6jrhc5dq3suzwhdo4nbtsi"
    }
   }
  }
