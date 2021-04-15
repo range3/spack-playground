@@ -1,6 +1,9 @@
+#include <chrono>
 #include <cxxopts.hpp>
 #include <thallium.hpp>
 #include <thallium/engine.hpp>
+#include <thallium/remote_procedure.hpp>
+#include <thallium/serialization/stl/string.hpp>
 
 namespace tl = thallium;
 
@@ -9,7 +12,7 @@ auto main(int argc, char** argv) -> int {
   // clang-format off
   options.add_options()
     ("h,help", "Print usage")
-    ("t,type", "Address Type", cxxopts::value<std::string>()->default_value("sockets"))
+    ("p,provider", "Provider", cxxopts::value<std::string>()->default_value("sockets"))
     ("a,addr", "Address", cxxopts::value<std::string>())
   ;
   // clang-format on
@@ -20,10 +23,22 @@ auto main(int argc, char** argv) -> int {
     return 0;
   }
 
-  tl::engine myEngine(result["type"].as<std::string>(), THALLIUM_CLIENT_MODE);
-  tl::remote_procedure hello = myEngine.define("hello").disable_response();
+  tl::engine myEngine(result["provider"].as<std::string>(),
+                      THALLIUM_CLIENT_MODE);
   tl::endpoint server = myEngine.lookup(result["addr"].as<std::string>());
-  hello.on(server)();
+  auto hello = myEngine.define("hello").disable_response();
+  hello.on(server)(std::string("Ichiro"));
+
+  tl::remote_procedure sum = myEngine.define("sum");
+  int ret = sum.on(server).timed(std::chrono::milliseconds(1), 42, 63);
+  std::cout << "Server answered: " << ret << std::endl;
+
+  tl::remote_procedure lambda = myEngine.define("lambda").disable_response();
+  lambda.on(server)(777);
+
+  tl::remote_procedure shutdown =
+      myEngine.define("shutdown").disable_response();
+  shutdown.on(server)();
 
   return 0;
 }
