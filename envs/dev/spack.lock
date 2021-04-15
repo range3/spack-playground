@@ -17,12 +17,8 @@
    "spec": "py-pyyaml"
   },
   {
-   "hash": "cdoya2ztszhbnnwvmiaunn4fglmdurda",
+   "hash": "sbk6c5m6kl5oaa5lkcxqhiuvcb3dy5fs",
    "spec": "mochi-thallium"
-  },
-  {
-   "hash": "letg6ayluu23a5jdgtxcj3vugoebsknr",
-   "spec": "mercury+debug"
   }
  ],
  "concrete_specs": {
@@ -1804,7 +1800,7 @@
     "hash": "ssrc42zl6tfvsph6cmponywb7apuw6am"
    }
   },
-  "cdoya2ztszhbnnwvmiaunn4fglmdurda": {
+  "sbk6c5m6kl5oaa5lkcxqhiuvcb3dy5fs": {
    "mochi-thallium": {
     "version": "0.8.4",
     "arch": {
@@ -1874,7 +1870,7 @@
       ]
      },
      "mochi-margo": {
-      "hash": "farji3dn57iumph4nlg4a3ax3bk44ab2",
+      "hash": "lxo2t2t3xnbi46bstpjm4ahhbju4jmmu",
       "type": [
        "build",
        "link"
@@ -1887,7 +1883,7 @@
       ]
      }
     },
-    "hash": "vyfvs7tt55eoeh4sxet5lrleco7yzn3w"
+    "hash": "qt7muttldshpzumpmfat3zmgk5kkty4k"
    }
   },
   "am5z5so22444cxw7ulrvat4ly7m2ygcr": {
@@ -1967,7 +1963,7 @@
     "hash": "ebju5lbyh6dbcoxdogudfa6vkinsu6d4"
    }
   },
-  "farji3dn57iumph4nlg4a3ax3bk44ab2": {
+  "lxo2t2t3xnbi46bstpjm4ahhbju4jmmu": {
    "mochi-margo": {
     "version": "0.9.4",
     "arch": {
@@ -2059,7 +2055,7 @@
       ]
      },
      "mercury": {
-      "hash": "letg6ayluu23a5jdgtxcj3vugoebsknr",
+      "hash": "6wwkrojnnohqz4uvcn33fmxi4hxuteh2",
       "type": [
        "build",
        "link",
@@ -2073,7 +2069,7 @@
       ]
      }
     },
-    "hash": "vwqchdm3np5d3m3ftnryz37dmxbzm25d"
+    "hash": "zptghywtbk2zjaulexhtkl42nuesnics"
    }
   },
   "4pe6nanjluv22gre32a6yuyrso7amu32": {
@@ -2667,9 +2663,9 @@
     "hash": "nijcyvdj44d7zm4mgqj3fyecnpb7vihi"
    }
   },
-  "letg6ayluu23a5jdgtxcj3vugoebsknr": {
+  "6wwkrojnnohqz4uvcn33fmxi4hxuteh2": {
    "mercury": {
-    "version": "2.0.0",
+    "version": "2.0.1rc2",
     "arch": {
      "platform": "linux",
      "platform_os": "ubuntu20.04",
@@ -2717,7 +2713,7 @@
      "build_type": "RelWithDebInfo",
      "cci": false,
      "checksum": true,
-     "debug": true,
+     "debug": false,
      "ipo": false,
      "mpi": false,
      "ofi": true,
@@ -2753,7 +2749,7 @@
       ]
      }
     },
-    "hash": "3v2y2whlezg2rls5sf3j4xmtm6x2jqj4"
+    "hash": "hlprhdfe6qmvrmmrv5dm43um5sv33g46"
    }
   },
   "mhqcdfgyylnhqsdfdhibblclt64joumx": {

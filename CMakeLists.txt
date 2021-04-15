@@ -26,11 +26,8 @@ option(${PROJECT_NAME_UPPERCASE}_BUILD_TESTS "Build tests"
 option(${PROJECT_NAME_UPPERCASE}_FORMAT
        "Enable targets: format/check-format/fix-format"
        ${${PROJECT_NAME_UPPERCASE}_ROOT_PROJECT})
-cmake_dependent_option(${PROJECT_NAME_UPPERCASE}_CLANG_TIDY "Enable clang-tidy"
-                       ON "CMAKE_CXX_COMPILER_ID STREQUAL Clang" OFF)
-cmake_dependent_option(
-  ${PROJECT_NAME_UPPERCASE}_IWYU "Enable iwyu(include-what-you-use)" ON
-  "CMAKE_CXX_COMPILER_ID STREQUAL Clang" OFF)
+option(${PROJECT_NAME_UPPERCASE}_CLANG_TIDY "Enable clang-tidy" ON)
+option(${PROJECT_NAME_UPPERCASE}_IWYU "Enable iwyu(include-what-you-use)" ON)
 option(${PROJECT_NAME_UPPERCASE}_BUILD_SHARED_LIBS "build as a shared library"
        ${BUILD_SHARED_LIBS})
 option(${PROJECT_NAME_UPPERCASE}_INTERPROCEDURAL_OPTIMIZATION
@@ -48,6 +45,13 @@ if(CMAKE_INTERPROCEDURAL_OPTIMIZATION
   else()
     message(FATAL_ERROR "Interprocedural optimization is not supported.")
   endif()
+endif()
+
+# Control where libraries and executables are placed during the build for convenience.
+if(${PROJECT_NAME_UPPERCASE}_ROOT_PROJECT)
+  set(CMAKE_RUNTIME_OUTPUT_DIRECTORY "${CMAKE_BINARY_DIR}/${CMAKE_INSTALL_BINDIR}")
+  set(CMAKE_LIBRARY_OUTPUT_DIRECTORY "${CMAKE_BINARY_DIR}/${CMAKE_INSTALL_LIBDIR}")
+  set(CMAKE_ARCHIVE_OUTPUT_DIRECTORY "${CMAKE_BINARY_DIR}/${CMAKE_INSTALL_LIBDIR}")
 endif()
 
 # Library build type

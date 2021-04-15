@@ -1,5 +1,6 @@
 #include <cxxopts.hpp>
 #include <thallium.hpp>
+#include <thallium/engine.hpp>
 
 namespace tl = thallium;
 
@@ -8,7 +9,8 @@ auto main(int argc, char** argv) -> int {
   // clang-format off
   options.add_options()
     ("h,help", "Print usage")
-    ("a,addr", "Address", cxxopts::value<std::string>()->default_value("na+sm"))
+    ("t,type", "Address Type", cxxopts::value<std::string>()->default_value("sockets"))
+    ("a,addr", "Address", cxxopts::value<std::string>())
   ;
   // clang-format on
 
@@ -18,7 +20,10 @@ auto main(int argc, char** argv) -> int {
     return 0;
   }
 
-  tl::engine myEngine(result["addr"].as<std::string>(), THALLIUM_CLIENT_MODE);
+  tl::engine myEngine(result["type"].as<std::string>(), THALLIUM_CLIENT_MODE);
+  tl::remote_procedure hello = myEngine.define("hello").disable_response();
+  tl::endpoint server = myEngine.lookup(result["addr"].as<std::string>());
+  hello.on(server)();
 
   return 0;
 }
