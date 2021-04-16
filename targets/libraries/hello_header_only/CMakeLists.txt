@@ -27,7 +27,10 @@ if(NOT is_header_only)
                                              ${${THIS_TARGET_NAME}_HDR})
 endif()
 
-target_compile_features(${THIS_TARGET_NAME} ${inheritance_type} cxx_std_20)
+target_compile_features(
+  ${THIS_TARGET_NAME}
+  ${inheritance_type}
+  cxx_std_20)
 target_compile_options(${THIS_TARGET_NAME} ${inheritance_type}
                        ${PROJECT_WARNINGS})
 

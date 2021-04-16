@@ -1,5 +1,6 @@
 add_subdirectory(libraries/hello_header_only)
 add_subdirectory(libraries/hellolib)
+add_subdirectory(libraries/hello_thallium)
 add_subdirectory(apps/use_library)
 add_subdirectory(apps/use_header_only)
 add_subdirectory(apps/example_cxxopts)

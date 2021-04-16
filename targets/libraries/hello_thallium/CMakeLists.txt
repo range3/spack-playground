@@ -1,12 +1,14 @@
-set(THIS_TARGET_NAME hellolib)
+set(THIS_TARGET_NAME hello_thallium)
 
 # List of HPP (header) library files.
-set(${THIS_TARGET_NAME}_HDR # cmf: sortable
-                            include/hellolib/hellolib.hpp)
+set(${THIS_TARGET_NAME}_HDR
+    # cmf: sortable
+    include/hello_thallium.hpp include/hello_thallium/point.hpp
+    include/hello_thallium/utils.hpp)
 
 # List of CPP (source) library files.
 set(${THIS_TARGET_NAME}_SRC # cmf: sortable
-                            src/hellolib.cpp)
+                            "")
 
 set(is_header_only TRUE)
 set(inheritance_type INTERFACE)

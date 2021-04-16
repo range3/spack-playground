@@ -21,10 +21,11 @@ find_package(thallium REQUIRED)
 find_package(PkgConfig REQUIRED)
 pkg_check_modules(MARGO REQUIRED IMPORTED_TARGET margo)
 pkg_check_modules(ABT REQUIRED IMPORTED_TARGET argobots)
-# pkg_check_modules(ABTIO REQUIRED IMPORTED_TARGET abt-io)
-# pkg_check_modules(SSG REQUIRED IMPORTED_TARGET ssg)
+# pkg_check_modules(ABTIO REQUIRED IMPORTED_TARGET abt-io) pkg_check_modules(SSG
+# REQUIRED IMPORTED_TARGET ssg)
 
-target_link_libraries(${EXE_TARGET_NAME}
-                      PRIVATE cxxopts::cxxopts thallium)
+target_link_libraries(
+  ${EXE_TARGET_NAME} PRIVATE cxxopts::cxxopts thallium
+                             ${PROJECT_NAME}::hello_thallium)
 
 install(TARGETS ${EXE_TARGET_NAME} DESTINATION "${CMAKE_INSTALL_BINDIR}")

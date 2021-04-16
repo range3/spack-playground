@@ -1,11 +1,14 @@
 #include <chrono>
 #include <cxxopts.hpp>
+#include <hello_thallium.hpp>
 #include <thallium.hpp>
 #include <thallium/engine.hpp>
 #include <thallium/remote_procedure.hpp>
 #include <thallium/serialization/stl/string.hpp>
+#include "hello_thallium/point.hpp"
 
 namespace tl = thallium;
+namespace ht = hello_thallium;
 
 auto main(int argc, char** argv) -> int {
   cxxopts::Options options("hello_thallium_client", "Hello Thallium Client");
@@ -35,6 +38,11 @@ auto main(int argc, char** argv) -> int {
 
   tl::remote_procedure lambda = myEngine.define("lambda").disable_response();
   lambda.on(server)(777);
+
+  auto userClass = myEngine.define("user_class");
+  ht::Point retPoint = userClass.on(server)(ht::Point(10, 20, 30));
+  std::cout << "Returned Point class = " << retPoint.x << ":" << retPoint.y
+            << ":" << retPoint.z << std::endl;
 
   tl::remote_procedure shutdown =
       myEngine.define("shutdown").disable_response();

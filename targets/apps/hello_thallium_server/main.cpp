@@ -1,14 +1,19 @@
 #include <chrono>
 #include <cxxopts.hpp>
+#include <hello_thallium.hpp>
 #include <iostream>
 #include <thallium.hpp>
 #include <thallium/request.hpp>
 #include <thallium/serialization/stl/string.hpp>
 #include <thread>
+#include "hello_thallium/point.hpp"
+#include "hello_thallium/utils.hpp"
 
 namespace tl = thallium;
+namespace ht = hello_thallium;
 
 void hello(const tl::request& req) {
+  UNUSED(req);
   std::cout << "Hello World!" << std::endl;
 }
 
@@ -32,6 +37,7 @@ auto main(int argc, char** argv) -> int {
   myEngine
       .define("hello",
               [](const tl::request& req, const std::string& name) {
+                UNUSED(req);
                 std::cout << "Hello " << name << std::endl;
               })
       .disable_response();
@@ -48,13 +54,22 @@ auto main(int argc, char** argv) -> int {
   myEngine
       .define("lambda",
               [](const tl::request& req, int x) {
+                UNUSED(req);
                 std::cout << "Lambda test" << x << std::endl;
               })
       .disable_response();
 
+  myEngine.define("user_class",
+                  [](const tl::request& req, const ht::Point& point) {
+                    std::cout << "Point class" << point.x << ":" << point.y
+                              << ":" << point.z << std::endl;
+                    req.respond(point);
+                  });
+
   myEngine
       .define("shutdown",
               [&myEngine](const tl::request& req) {
+                UNUSED(req);
                 std::cout << "server shutdown" << std::endl;
                 myEngine.finalize();
               })

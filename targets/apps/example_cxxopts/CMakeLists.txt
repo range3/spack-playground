@@ -17,7 +17,6 @@ endif()
 
 find_package(cxxopts REQUIRED)
 
-target_link_libraries(${EXE_TARGET_NAME}
-                      PRIVATE cxxopts::cxxopts)
+target_link_libraries(${EXE_TARGET_NAME} PRIVATE cxxopts::cxxopts)
 
 install(TARGETS ${EXE_TARGET_NAME} DESTINATION "${CMAKE_INSTALL_BINDIR}")
