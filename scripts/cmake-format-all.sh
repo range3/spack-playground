@@ -7,11 +7,6 @@ PROJECT_ROOT="$( dirname "${SCRIPT_DIR}" )"
 
 cd "${PROJECT_ROOT}"
 find targets tests \
-  -iname "*.cpp" \
-  -o -iname "*.cc" \
-  -o -iname "*.cxx" \
-  -o -iname "*.c++" \
-  -o -name "*.C" \
-  -o -iname "*.hpp" \
-  -o -iname "*.h" \
-| xargs clang-format "$@"
+  -iname "CMakeLists.txt" \
+  -o -iname "*.cmake" \
+| xargs cmake-format "$@"
