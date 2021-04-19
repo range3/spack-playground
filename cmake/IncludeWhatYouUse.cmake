@@ -62,6 +62,6 @@ function(enable_iwyu_targets)
     endif()
 
   else()
-    message(SEND_ERROR "iwyu target could not be added.")
+    message(WARNING "iwyu target could not be added.")
   endif()
 endfunction()

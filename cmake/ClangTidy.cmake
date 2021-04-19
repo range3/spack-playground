@@ -44,6 +44,6 @@ function(enable_clang_tidy_targets)
       COMMENT "Running ${RUN_CLANG_TIDY_EXE_NAME}"
       VERBATIM)
   else()
-    message(SEND_ERROR "clang-tidy target could not be added.")
+    message(WARNING "clang-tidy target could not be added.")
   endif()
 endfunction()
