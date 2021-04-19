@@ -1,7 +1,6 @@
 #pragma once
 
 #include <string>
-#define UNUSED(...) (void)(__VA_ARGS__)
 
 namespace hello_thallium {
 inline auto protocol(const std::string& addr) -> std::string {
