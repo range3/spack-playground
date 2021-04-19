@@ -57,7 +57,7 @@ auto main(int argc, char** argv) -> int {
     myEngine.define("do_rdma", f).disable_response();
 
   } else {
-    auto provider = ht::provider(result["addr"].as<std::string>());
+    auto protocol = ht::protocol(result["addr"].as<std::string>());
     // client
     tl::engine myEngine("tcp", MARGO_CLIENT_MODE);
     tl::remote_procedure remoteDoRdma =
