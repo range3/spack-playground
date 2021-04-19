@@ -8,4 +8,4 @@ cd "${PROJECT_ROOT}"
 
 . ${SCRIPT_DIR}/impl/cmake-config.sh
 
-cmake_config RelWithDebInfo
+cmake_config RelWithDebInfo clang
