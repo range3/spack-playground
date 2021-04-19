@@ -1,0 +1,20 @@
+{
+    "name": "Name",
+    "host": "hostname",
+    "protocol": "sftp",
+    "port": 22,
+    "username": "username",
+    "remotePath": "/remote/path/to/spack-playground",
+    "agent": "$SSH_AUTH_SOCK",
+    "ignore": [
+        ".git",
+        "/extern"
+    ],
+    "ignoreFile": ".gitignore",
+    "uploadOnSave": false,
+    "watcher": {
+        "files": "**/*",
+        "autoUpload": true,
+        "autoDelete": true
+    }
+}

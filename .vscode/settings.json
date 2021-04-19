@@ -3,12 +3,6 @@
   "cmake.generator": "Unix Makefiles",
   "cmake.buildDirectory": "${workspaceFolder}/build-${buildType}",
   "cmake.copyCompileCommands": "${workspaceFolder}/compile_commands.json",
-  "C_Cpp.autocomplete": "Disabled",
-  "C_Cpp.formatting": "Disabled",
-  "C_Cpp.errorSquiggles": "Disabled",
-  "C_Cpp.intelliSenseEngine": "Disabled",
-  "clangd.onConfigChanged": "restart",
-  "clangd.checkUpdates": true,
   "files.watcherExclude": {
     "**/.git/objects/**": true,
     "**/.git/subtree-cache/**": true,
