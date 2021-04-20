@@ -1,4 +1,3 @@
-#include <bits/stdint-uintn.h>
 #include <chrono>
 #include <cxxopts.hpp>
 #include <hello_thallium.hpp>

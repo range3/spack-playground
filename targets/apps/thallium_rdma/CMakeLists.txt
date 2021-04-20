@@ -18,6 +18,7 @@ endif()
 find_package(cxxopts REQUIRED)
 find_package(mercury REQUIRED)
 find_package(thallium REQUIRED)
+find_package(fmt REQUIRED)
 find_package(PkgConfig REQUIRED)
 pkg_check_modules(MARGO REQUIRED IMPORTED_TARGET margo)
 pkg_check_modules(ABT REQUIRED IMPORTED_TARGET argobots)
@@ -25,7 +26,7 @@ pkg_check_modules(ABT REQUIRED IMPORTED_TARGET argobots)
 # REQUIRED IMPORTED_TARGET ssg)
 
 target_link_libraries(
-  ${EXE_TARGET_NAME} PRIVATE cxxopts::cxxopts thallium
-                             ${PROJECT_NAME}::hello_thallium)
+  ${EXE_TARGET_NAME} PRIVATE cxxopts::cxxopts fmt::fmt thallium ${PROJECT_NAME}::elapsedtime
+                             ${PROJECT_NAME}::hello_thallium ${PROJECT_NAME}::gen_random_string)
 
 install(TARGETS ${EXE_TARGET_NAME} DESTINATION "${CMAKE_INSTALL_BINDIR}")

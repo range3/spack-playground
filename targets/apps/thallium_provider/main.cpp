@@ -1,4 +1,3 @@
-#include <bits/stdint-uintn.h>
 #include <chrono>
 #include <cxxopts.hpp>
 #include <hello_thallium.hpp>
@@ -83,16 +82,16 @@ auto main(int argc, char** argv) -> int {
 
     // client
     tl::engine myEngine(protocol, THALLIUM_CLIENT_MODE);
-    tl::remote_procedure sum   = myEngine.define("sum");
-    tl::remote_procedure prod  = myEngine.define("prod");
+    tl::remote_procedure sum = myEngine.define("sum");
+    tl::remote_procedure prod = myEngine.define("prod");
     tl::remote_procedure hello = myEngine.define("hello").disable_response();
     tl::remote_procedure print = myEngine.define("print").disable_response();
     tl::endpoint serverEndpoint =
         myEngine.lookup(result["addr"].as<std::string>());
     tl::provider_handle ph(serverEndpoint, providerId);
-    int ret = sum.on(ph)(42,63);
+    int ret = sum.on(ph)(42, 63);
     std::cout << "(sum) Server answered " << ret << std::endl;
-    ret = prod.on(ph)(42,63);
+    ret = prod.on(ph)(42, 63);
     std::cout << "(prod) Server answered " << ret << std::endl;
     std::string name("Matthieu");
     hello.on(ph)(name);
