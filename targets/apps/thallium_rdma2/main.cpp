@@ -35,6 +35,9 @@ auto main(int argc, char** argv) -> int {
     return 0;
   }
 
+  // margo log
+  margo_set_global_log_level(MARGO_LOG_TRACE);
+
   const size_t payloadSize = result["size"].as<size_t>();
   if (result["server"].as<bool>()) {
     // server
