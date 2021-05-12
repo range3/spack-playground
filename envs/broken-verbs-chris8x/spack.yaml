@@ -9,7 +9,7 @@ spack:
   - fmt
   - mochi-thallium
   - mercury +ofi~boostsys
-  - libfabric@1.12.0 fabrics=rxm,sockets,tcp,verbs
+  - libfabric fabrics=rxm,sockets,tcp,verbs
   concretization: together
   view: true
   packages:
@@ -35,8 +35,6 @@ spack:
         prefix: /usr
     cmake:
       externals:
-      - spec: cmake@2.8.12.2
-        prefix: /usr
       - spec: cmake@3.17.5
         prefix: /usr/local
     cpio:
@@ -61,25 +59,25 @@ spack:
         prefix: /usr
     gcc:
       externals:
-      - spec: gcc@9.3.1 languages=c,c++,fortran
-        prefix: /opt/rh/devtoolset-9/root/usr
-        extra_attributes:
-          compilers:
-            c: /opt/rh/devtoolset-9/root/usr/bin/i686-redhat-linux-gcc-9
-            cxx: /opt/rh/devtoolset-9/root/usr/bin/x86_64-redhat-linux-g++
-            fortran: /opt/rh/devtoolset-9/root/usr/bin/gfortran
       - spec: gcc@4.8.5 languages=c,c++,fortran
         prefix: /usr
         extra_attributes:
           compilers:
-            c: /usr/bin/x86_64-redhat-linux-gcc
-            cxx: /usr/bin/x86_64-redhat-linux-g++
+            c: /usr/bin/gcc
+            cxx: /usr/bin/g++
             fortran: /usr/bin/gfortran
+      - spec: gcc@9.3.1 languages=c,c++,fortran
+        prefix: /opt/rh/devtoolset-9/root/usr
+        extra_attributes:
+          compilers:
+            c: /opt/rh/devtoolset-9/root/usr/bin/x86_64-redhat-linux-gcc-9
+            cxx: /opt/rh/devtoolset-9/root/usr/bin/g++
+            fortran: /opt/rh/devtoolset-9/root/usr/bin/gfortran
     git:
       externals:
       - spec: git@2.9.5+tcltk
         prefix: /home/hiraga/local
-      - spec: git@2.24.4~tcltk
+      - spec: git@1.8.3.1~tcltk
         prefix: /usr
     gmake:
       externals:
@@ -87,10 +85,6 @@ spack:
         prefix: /usr
       - spec: gmake@4.2.1
         prefix: /opt/rh/devtoolset-9/root/usr
-    go:
-      externals:
-      - spec: go@1.15.5
-        prefix: /usr
     groff:
       externals:
       - spec: groff@1.22.2
@@ -112,10 +106,6 @@ spack:
     m4:
       externals:
       - spec: m4@1.4.16
-        prefix: /usr
-    ncurses:
-      externals:
-      - spec: ncurses@5.9.20130511+termlib abi=5
         prefix: /usr
     openmpi:
       externals:
@@ -147,10 +137,6 @@ spack:
     rsync:
       externals:
       - spec: rsync@3.1.2
-        prefix: /usr
-    ruby:
-      externals:
-      - spec: ruby@2.0.0
         prefix: /usr
     tar:
       externals:

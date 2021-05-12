@@ -13,16 +13,16 @@
    "spec": "fmt"
   },
   {
-   "hash": "hwwtdegluo2yclyeokq73774t7mweuce",
+   "hash": "7ev3l5esy5fp7mcuyduvnk36shmtbnyu",
    "spec": "mochi-thallium"
   },
   {
-   "hash": "pstamjjnx54pt4wivrimpqxnprcjvccs",
+   "hash": "qezl3akgrti7l3tyrs4c44yiqiaf5cex",
    "spec": "mercury~boostsys+ofi"
   },
   {
-   "hash": "kch4qe36lfdnsdusco4zap3axugrwyrd",
-   "spec": "libfabric@1.12.0 fabrics=rxm,sockets,tcp,verbs"
+   "hash": "idsox6vqn252cm4x5rw5pngik5yxjdrs",
+   "spec": "libfabric fabrics=rxm,sockets,tcp,verbs"
   }
  ],
  "concrete_specs": {
@@ -252,7 +252,7 @@
     "hash": "zjyde3aensjp5aosdukd55wkaeldevgk"
    }
   },
-  "hwwtdegluo2yclyeokq73774t7mweuce": {
+  "7ev3l5esy5fp7mcuyduvnk36shmtbnyu": {
    "mochi-thallium": {
     "version": "0.8.5",
     "arch": {
@@ -329,7 +329,7 @@
       ]
      },
      "mochi-margo": {
-      "hash": "v7vxuuab33y76bonyiajw3i6beozgvyj",
+      "hash": "n3fa6ko6sbqokdbvilyhya7acovldqpg",
       "type": [
        "build",
        "link"
@@ -342,7 +342,7 @@
       ]
      }
     },
-    "hash": "p7k3z4ols6xetryw7sufkspqerikuqf2"
+    "hash": "kwbmt34og2n5tedidnx4e6mumsqdibtn"
    }
   },
   "eode2aqixij7duy3ud3pek3eefug4zdq": {
@@ -429,7 +429,7 @@
     "hash": "ymv42lnkp3ep7xf45rm4qz3rvqnztexi"
    }
   },
-  "v7vxuuab33y76bonyiajw3i6beozgvyj": {
+  "n3fa6ko6sbqokdbvilyhya7acovldqpg": {
    "mochi-margo": {
     "version": "0.9.4",
     "arch": {
@@ -528,7 +528,7 @@
       ]
      },
      "mercury": {
-      "hash": "pstamjjnx54pt4wivrimpqxnprcjvccs",
+      "hash": "qezl3akgrti7l3tyrs4c44yiqiaf5cex",
       "type": [
        "build",
        "link",
@@ -542,7 +542,7 @@
       ]
      }
     },
-    "hash": "qjxrbcayo4ac7plnzm4blcui5he3cbmb"
+    "hash": "ypvttl33ili7iu3jgaptpvzkjxximxkb"
    }
   },
   "katwdffsrbb3dasgbwbvj2zo6azhjajy": {
@@ -953,7 +953,7 @@
     "hash": "mw4noyhttgezm2e3z3jwuiqwok62vsws"
    }
   },
-  "pstamjjnx54pt4wivrimpqxnprcjvccs": {
+  "qezl3akgrti7l3tyrs4c44yiqiaf5cex": {
    "mercury": {
     "version": "2.0.1rc3",
     "arch": {
@@ -1032,19 +1032,19 @@
       ]
      },
      "libfabric": {
-      "hash": "kch4qe36lfdnsdusco4zap3axugrwyrd",
+      "hash": "idsox6vqn252cm4x5rw5pngik5yxjdrs",
       "type": [
        "build",
        "link"
       ]
      }
     },
-    "hash": "63rbndmdl65wh66dia6v3zll6himdhia"
+    "hash": "odnqz5vms7pxjikia3fjmdzkplpqsuan"
    }
   },
-  "kch4qe36lfdnsdusco4zap3axugrwyrd": {
+  "idsox6vqn252cm4x5rw5pngik5yxjdrs": {
    "libfabric": {
-    "version": "1.12.0",
+    "version": "1.11.1",
     "arch": {
      "platform": "linux",
      "platform_os": "centos7",
@@ -1118,7 +1118,7 @@
       ]
      }
     },
-    "hash": "kch4qe36lfdnsdusco4zap3axugrwyrd"
+    "hash": "idsox6vqn252cm4x5rw5pngik5yxjdrs"
    }
   },
   "vogpj7vetkgjkxnfyv7in3q2euimll6q": {
