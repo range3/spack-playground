@@ -7,6 +7,7 @@ string(TOLOWER ${PROJECT_NAME} PROJECT_NAME_LOWERCASE)
 string(TOUPPER ${PROJECT_NAME} PROJECT_NAME_UPPERCASE)
 include(GNUInstallDirs)
 include(cmake/CompilerWarnings.cmake)
+list(APPEND CMAKE_MODULE_PATH "${CMAKE_CURRENT_LIST_DIR}/cmake")
 
 # Prevent in-source builds
 if(PROJECT_SOURCE_DIR STREQUAL PROJECT_BINARY_DIR)
@@ -131,6 +132,8 @@ elseif(EXISTS ${CMAKE_CURRENT_BINARY_DIR}/conanbuildinfo.cmake)
   include(${CMAKE_CURRENT_BINARY_DIR}/conanbuildinfo.cmake)
   conan_basic_setup(TARGETS)
 endif()
+
+# depenencies
 
 # source files
 add_subdirectory(targets)
