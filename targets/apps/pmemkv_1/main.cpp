@@ -49,9 +49,9 @@
 
 using namespace pmem::kv;
 
-const uint64_t SIZE = 1024UL * 1024UL * 1024UL;
+const uint64_t kSize = 1024UL * 1024UL * 1024UL;
 
-int main(int argc, char* argv[]) {
+auto main(int argc, char* argv[]) -> int {
   if (argc < 2) {
     std::cerr << "Usage: " << argv[0] << " file\n";
     exit(1);
@@ -63,7 +63,7 @@ int main(int argc, char* argv[]) {
 
   status s = cfg.put_path(argv[1]);
   ASSERT(s == status::OK);
-  s = cfg.put_size(SIZE);
+  s = cfg.put_size(kSize);
   ASSERT(s == status::OK);
   s = cfg.put_force_create(true);
   ASSERT(s == status::OK);
@@ -82,7 +82,7 @@ int main(int argc, char* argv[]) {
   s = kv.put("key1", "value1");
   ASSERT(s == status::OK);
 
-  size_t cnt;
+  size_t cnt = 0;
   s = kv.count_all(cnt);
   ASSERT(s == status::OK && cnt == 1);
 
@@ -97,6 +97,7 @@ int main(int argc, char* argv[]) {
   s = kv.put("key3", "value3");
   ASSERT(s == status::OK);
   kv.get_all([](string_view k, string_view v) {
+    (void)v;
     LOG("  visited: " << k.data());
     return 0;
   });

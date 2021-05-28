@@ -33,14 +33,16 @@ function(enable_clang_tidy_targets)
         PARENT_SCOPE)
     add_custom_target(
       clang-tidy
-      COMMAND "${RUN_CLANG_TIDY_EXE}" -p "${CMAKE_BINARY_DIR}" -header-filter
-              "${CMAKE_SOURCE_DIR}/.*"
+      COMMAND "${RUN_CLANG_TIDY_EXE}" -p "${CMAKE_BINARY_DIR}" -quiet
+      # COMMAND "${RUN_CLANG_TIDY_EXE}" -p "${CMAKE_BINARY_DIR}" -header-filter
+      #         "${CMAKE_SOURCE_DIR}/.*"
       COMMENT "Running ${RUN_CLANG_TIDY_EXE_NAME}"
       VERBATIM)
     add_custom_target(
       fix-clang-tidy
-      COMMAND "${RUN_CLANG_TIDY_EXE}" -p "${CMAKE_BINARY_DIR}" -header-filter
-              "${CMAKE_SOURCE_DIR}/.*" -fix
+      COMMAND "${RUN_CLANG_TIDY_EXE}" -p "${CMAKE_BINARY_DIR}" -quiet -fix -format
+      # COMMAND "${RUN_CLANG_TIDY_EXE}" -p "${CMAKE_BINARY_DIR}" -header-filter
+      #         "${CMAKE_SOURCE_DIR}/.*" -fix
       COMMENT "Running ${RUN_CLANG_TIDY_EXE_NAME}"
       VERBATIM)
   else()

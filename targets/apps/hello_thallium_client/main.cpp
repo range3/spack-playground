@@ -26,26 +26,26 @@ auto main(int argc, char** argv) -> int {
     return 0;
   }
 
-  tl::engine myEngine(result["provider"].as<std::string>(),
+  tl::engine my_engine(result["provider"].as<std::string>(),
                       THALLIUM_CLIENT_MODE);
-  tl::endpoint server = myEngine.lookup(result["addr"].as<std::string>());
-  auto hello = myEngine.define("hello").disable_response();
+  tl::endpoint server = my_engine.lookup(result["addr"].as<std::string>());
+  auto hello = my_engine.define("hello").disable_response();
   hello.on(server)(std::string("Ichiro"));
 
-  tl::remote_procedure sum = myEngine.define("sum");
+  tl::remote_procedure sum = my_engine.define("sum");
   int ret = sum.on(server).timed(std::chrono::milliseconds(1), 42, 63);
   std::cout << "Server answered: " << ret << std::endl;
 
-  tl::remote_procedure lambda = myEngine.define("lambda").disable_response();
+  tl::remote_procedure lambda = my_engine.define("lambda").disable_response();
   lambda.on(server)(777);
 
-  auto userClass = myEngine.define("user_class");
-  ht::Point retPoint = userClass.on(server)(ht::Point(10, 20, 30));
-  std::cout << "Returned Point class = " << retPoint.x << ":" << retPoint.y
-            << ":" << retPoint.z << std::endl;
+  auto user_class = my_engine.define("user_class");
+  ht::Point ret_point = user_class.on(server)(ht::Point(10, 20, 30));
+  std::cout << "Returned Point class = " << ret_point.x << ":" << ret_point.y
+            << ":" << ret_point.z << std::endl;
 
   tl::remote_procedure shutdown =
-      myEngine.define("shutdown").disable_response();
+      my_engine.define("shutdown").disable_response();
   shutdown.on(server)();
 
   return 0;

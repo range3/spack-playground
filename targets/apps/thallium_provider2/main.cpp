@@ -22,7 +22,7 @@ class MySumProvider : public tl::provider<MySumProvider> {
     req.respond(x + y);
   }
 
-  int sum(int x, int y) {
+  auto sum(int x, int y) -> int {
     std::cout << "Computing " << x << "+" << y << std::endl;
     return x + y;
   }
@@ -31,13 +31,13 @@ class MySumProvider : public tl::provider<MySumProvider> {
     std::cout << "Hello, " << name << std::endl;
   }
 
-  size_t print(const std::string& word) {
+  auto print(const std::string& word) -> size_t {
     std::cout << "Printing " << word << std::endl;
     return word.size();
   }
 
-  MySumProvider(tl::engine& e, uint16_t providerId = 1)
-      : tl::provider<MySumProvider>(e, providerId),
+  MySumProvider(tl::engine& e, uint16_t provider_id = 1)
+      : tl::provider<MySumProvider>(e, provider_id),
         // keep the RPCs in remote_procedure objects so we can deregister them.
         prod_(define("prod", &MySumProvider::prod)),
         sum_(define("sum", &MySumProvider::sum)),
@@ -54,8 +54,8 @@ class MySumProvider : public tl::provider<MySumProvider> {
  public:
   // this factory method and the private constructor prevent users
   // from putting an instance  of my_sum_provider on  the stack.
-  static auto create(tl::engine& e, uint16_t providerId = 1) -> MySumProvider* {
-    return new MySumProvider(e, providerId);
+  static auto create(tl::engine& e, uint16_t provider_id = 1) -> MySumProvider* {
+    return new MySumProvider(e, provider_id);
   }
 
   ~MySumProvider() override {
@@ -93,36 +93,36 @@ auto main(int argc, char** argv) -> int {
 
   if (result.count("server") != 0U) {
     // server
-    auto providerId = result["provider"].as<uint16_t>();
+    auto provider_id = result["provider"].as<uint16_t>();
 
-    tl::engine myEngine(result["addr"].as<std::string>(), THALLIUM_SERVER_MODE);
-    myEngine.enable_remote_shutdown();
-    std::cout << "Server running at address " << myEngine.self()
-              << " with provider id " << providerId << " and " << providerId + 1
+    tl::engine my_engine(result["addr"].as<std::string>(), THALLIUM_SERVER_MODE);
+    my_engine.enable_remote_shutdown();
+    std::cout << "Server running at address " << my_engine.self()
+              << " with provider id " << provider_id << " and " << provider_id + 1
               << std::endl;
     // MySumProvider myProvider(myEngine, providerId);
     // create a pointer to the provider instance using the factory methods.
-    MySumProvider* myProvider1 = MySumProvider::create(myEngine, providerId);
-    MySumProvider* myProvider2 =
-        MySumProvider::create(myEngine, providerId + 1);
-    ALL_UNUSED(myProvider1, myProvider2);
+    MySumProvider* my_provider1 = MySumProvider::create(my_engine, provider_id);
+    MySumProvider* my_provider2 =
+        MySumProvider::create(my_engine, provider_id + 1);
+    ALL_UNUSED(my_provider1, my_provider2);
 
-    myEngine.wait_for_finalize();
+    my_engine.wait_for_finalize();
     // the finalization callbacks will ensure that providers are freed.
 
   } else {
     auto protocol = ht::protocol(result["addr"].as<std::string>());
-    auto providerId = result["provider"].as<uint16_t>();
+    auto provider_id = result["provider"].as<uint16_t>();
 
     // client
-    tl::engine myEngine(protocol, THALLIUM_CLIENT_MODE);
-    tl::remote_procedure sum = myEngine.define("sum");
-    tl::remote_procedure prod = myEngine.define("prod");
-    tl::remote_procedure hello = myEngine.define("hello").disable_response();
-    tl::remote_procedure print = myEngine.define("print").disable_response();
-    tl::endpoint serverEndpoint =
-        myEngine.lookup(result["addr"].as<std::string>());
-    tl::provider_handle ph(serverEndpoint, providerId);
+    tl::engine my_engine(protocol, THALLIUM_CLIENT_MODE);
+    tl::remote_procedure sum = my_engine.define("sum");
+    tl::remote_procedure prod = my_engine.define("prod");
+    tl::remote_procedure hello = my_engine.define("hello").disable_response();
+    tl::remote_procedure print = my_engine.define("print").disable_response();
+    tl::endpoint server_endpoint =
+        my_engine.lookup(result["addr"].as<std::string>());
+    tl::provider_handle ph(server_endpoint, provider_id);
     int ret = sum.on(ph)(42, 63);
     std::cout << "(sum) Server answered " << ret << std::endl;
     ret = prod.on(ph)(42, 63);
@@ -130,7 +130,7 @@ auto main(int argc, char** argv) -> int {
     std::string name("Matthieu");
     hello.on(ph)(name);
     print.on(ph)(name);
-    myEngine.shutdown_remote_engine(ph);
+    my_engine.shutdown_remote_engine(ph);
   }
 
   return 0;

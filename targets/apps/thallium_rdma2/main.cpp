@@ -38,11 +38,11 @@ auto main(int argc, char** argv) -> int {
   // margo log
   margo_set_global_log_level(MARGO_LOG_TRACE);
 
-  const size_t payloadSize = result["size"].as<size_t>();
+  const size_t payload_size = result["size"].as<size_t>();
   if (result["server"].as<bool>()) {
     // server
-    tl::engine myEngine(result["addr"].as<std::string>(), THALLIUM_SERVER_MODE);
-    std::cout << "Server running at address " << myEngine.self() << std::endl;
+    tl::engine my_engine(result["addr"].as<std::string>(), THALLIUM_SERVER_MODE);
+    std::cout << "Server running at address " << my_engine.self() << std::endl;
 
     // exposing segments in this location does not work
     // std::string in;
@@ -53,26 +53,26 @@ auto main(int argc, char** argv) -> int {
     // tl::bulk localWrite =
     //     myEngine.expose(segmentsIn, tl::bulk_mode::write_only);
 
-    myEngine
+    my_engine
         .define("do_rdma",
-                [=, &myEngine](const tl::request& req, tl::bulk& b) {
+                [payload_size, &my_engine](const tl::request& req, tl::bulk& b) {
                   tl::endpoint ep = req.get_endpoint();
 
                   std::string in;
-                  in.resize(payloadSize);
-                  std::vector<std::pair<void*, std::size_t>> segmentsIn(1);
-                  segmentsIn[0].first = static_cast<void*>(&in[0]);
-                  segmentsIn[0].second = in.size();
-                  tl::bulk localWrite =
-                      myEngine.expose(segmentsIn, tl::bulk_mode::write_only);
+                  in.resize(payload_size);
+                  std::vector<std::pair<void*, std::size_t>> segments_in(1);
+                  segments_in[0].first = static_cast<void*>(&in[0]);
+                  segments_in[0].second = in.size();
+                  tl::bulk local_write =
+                      my_engine.expose(segments_in, tl::bulk_mode::write_only);
 
                   et::ElapsedTime t;
-                  b.on(ep) >> localWrite;
+                  b.on(ep) >> local_write;
                   t.freeze();
 
                   // std::cout << in << "\n";
 
-                  fmt::print("Received bulk size: {:5} bytes, ", payloadSize);
+                  fmt::print("Received bulk size: {:5} bytes, ", payload_size);
                   fmt::print("Elapsed time: {0:.5f} ms\n", t.msec());
                   std::cout << std::flush;
                 })
@@ -83,20 +83,20 @@ auto main(int argc, char** argv) -> int {
         grs::generateRandomAlphanumericString(result["size"].as<size_t>());
     auto protocol = ht::protocol(result["addr"].as<std::string>());
     // client
-    tl::engine myEngine(protocol, MARGO_CLIENT_MODE);
-    tl::remote_procedure remoteDoRdma =
-        myEngine.define("do_rdma").disable_response();
-    tl::endpoint serverEndpoint =
-        myEngine.lookup(result["addr"].as<std::string>());
+    tl::engine my_engine(protocol, MARGO_CLIENT_MODE);
+    tl::remote_procedure remote_do_rdma =
+        my_engine.define("do_rdma").disable_response();
+    tl::endpoint server_endpoint =
+        my_engine.lookup(result["addr"].as<std::string>());
 
     std::vector<std::pair<void*, std::size_t>> segments(1);
     segments[0].first =
         const_cast<void*>(static_cast<const void*>(&payload[0]));
     segments[0].second = payload.size();
 
-    tl::bulk myBulk = myEngine.expose(segments, tl::bulk_mode::read_only);
+    tl::bulk my_bulk = my_engine.expose(segments, tl::bulk_mode::read_only);
 
-    remoteDoRdma.on(serverEndpoint)(myBulk);
+    remote_do_rdma.on(server_endpoint)(my_bulk);
   }
 
   return 0;

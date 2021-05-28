@@ -35,9 +35,9 @@ auto main(int argc, char** argv) -> int {
 
   if (result["server"].as<bool>()) {
     // server
-    tl::engine myEngine(result["addr"].as<std::string>(), THALLIUM_SERVER_MODE);
-    std::cout << "Server running at address " << myEngine.self() << std::endl;
-    myEngine.define("sum", [](const tl::request& req, int x, int y) {
+    tl::engine my_engine(result["addr"].as<std::string>(), THALLIUM_SERVER_MODE);
+    std::cout << "Server running at address " << my_engine.self() << std::endl;
+    my_engine.define("sum", [](const tl::request& req, int x, int y) {
       fmt::print("Computing {} + {}\n", x, y);
       std::flush(std::cout);
       req.respond(x + y);
@@ -45,10 +45,10 @@ auto main(int argc, char** argv) -> int {
 
   } else {
     // client
-    tl::engine myEngine(ht::protocol(result["addr"].as<std::string>()),
+    tl::engine my_engine(ht::protocol(result["addr"].as<std::string>()),
                         THALLIUM_CLIENT_MODE);
-    tl::remote_procedure sum = myEngine.define("sum");
-    tl::endpoint server = myEngine.lookup(result["addr"].as<std::string>());
+    tl::remote_procedure sum = my_engine.define("sum");
+    tl::endpoint server = my_engine.lookup(result["addr"].as<std::string>());
     auto request = sum.on(server).async(42, 63); //NOLINT
     // do something else ...
     // check if request completed

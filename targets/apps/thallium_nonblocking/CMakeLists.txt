@@ -27,6 +27,6 @@ pkg_check_modules(ABT REQUIRED IMPORTED_TARGET argobots)
 
 target_link_libraries(
   ${EXE_TARGET_NAME} PRIVATE cxxopts::cxxopts fmt::fmt thallium
-                             ${PROJECT_NAME}::hello_thallium )
+                             ${PROJECT_NAME}::hello_thallium)
 
 install(TARGETS ${EXE_TARGET_NAME} DESTINATION "${CMAKE_INSTALL_BINDIR}")

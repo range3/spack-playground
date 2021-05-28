@@ -41,27 +41,27 @@ auto main(int argc, char** argv) -> int {
     // > class.
 
     tl::abt scope;
-    tl::engine myEngine(result["addr"].as<std::string>(), THALLIUM_SERVER_MODE);
+    tl::engine my_engine(result["addr"].as<std::string>(), THALLIUM_SERVER_MODE);
     std::vector<tl::managed<tl::xstream>> ess;
-    tl::managed<tl::pool> myPool = tl::pool::create(tl::pool::access::spmc);
+    tl::managed<tl::pool> my_pool = tl::pool::create(tl::pool::access::spmc);
     for (size_t i = 0; i < 4; i++) {
       tl::managed<tl::xstream> es =
-          tl::xstream::create(tl::scheduler::predef::deflt, *myPool);
+          tl::xstream::create(tl::scheduler::predef::deflt, *my_pool);
       ess.push_back(std::move(es));
     }
 
-    std::cout << "Server running at address " << myEngine.self() << std::endl;
+    std::cout << "Server running at address " << my_engine.self() << std::endl;
 
-    myEngine.define(
+    my_engine.define(
         "sum",
         [](const tl::request& req, int x, int y) {
           fmt::print("Computing {} + {}\n", x, y);
           std::flush(std::cout);
           req.respond(x + y);
         },
-        0, *myPool);  // provider_id == 0 ? but it works.
+        0, *my_pool);  // provider_id == 0 ? but it works.
 
-    myEngine.wait_for_finalize();
+    my_engine.wait_for_finalize();
 
     for (size_t i = 0; i < 4; i++) {
       ess[i]->join();
@@ -69,9 +69,9 @@ auto main(int argc, char** argv) -> int {
 
   } else {
     const auto protocol = ht::protocol(result["addr"].as<std::string>());
-    tl::engine myEngine(protocol, THALLIUM_CLIENT_MODE);
-    tl::remote_procedure sum = myEngine.define("sum");
-    tl::endpoint server = myEngine.lookup(result["addr"].as<std::string>());
+    tl::engine my_engine(protocol, THALLIUM_CLIENT_MODE);
+    tl::remote_procedure sum = my_engine.define("sum");
+    tl::endpoint server = my_engine.lookup(result["addr"].as<std::string>());
     int ret = sum.on(server)(42, 63);
     std::cout << "Server answered " << ret << std::endl;
   }

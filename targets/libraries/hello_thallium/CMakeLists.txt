@@ -3,11 +3,8 @@ set(THIS_TARGET_NAME hello_thallium)
 # List of HPP (header) library files.
 set(${THIS_TARGET_NAME}_HDR
     # cmf: sortable
-    include/hello_thallium.hpp
-    include/hello_thallium/point.hpp
-    include/hello_thallium/utils.hpp
-    include/hello_thallium/unused.hpp
-    )
+    include/hello_thallium.hpp include/hello_thallium/point.hpp
+    include/hello_thallium/unused.hpp include/hello_thallium/utils.hpp)
 
 # List of CPP (source) library files.
 set(${THIS_TARGET_NAME}_SRC # cmf: sortable
@@ -59,8 +56,8 @@ if(NOT is_header_only)
                         PROPERTIES VERSION ${${PROJECT_NAME}_VERSION})
 endif()
 
-set_target_properties(${THIS_TARGET_NAME} PROPERTIES PUBLIC_HEADER
-                                                     "${${THIS_TARGET_NAME}_HDR}")
+set_target_properties(${THIS_TARGET_NAME}
+                      PROPERTIES PUBLIC_HEADER "${${THIS_TARGET_NAME}_HDR}")
 
 target_include_directories(
   ${THIS_TARGET_NAME} ${inheritance_type}

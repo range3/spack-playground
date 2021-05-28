@@ -31,10 +31,10 @@ auto main(int argc, char** argv) -> int {
     return 0;
   }
 
-  tl::engine myEngine(result["addr"].as<std::string>(), THALLIUM_SERVER_MODE);
-  std::cout << "Server running at address " << myEngine.self() << std::endl;
+  tl::engine my_engine(result["addr"].as<std::string>(), THALLIUM_SERVER_MODE);
+  std::cout << "Server running at address " << my_engine.self() << std::endl;
 
-  myEngine
+  my_engine
       .define("hello",
               [](const tl::request& req, const std::string& name) {
                 UNUSED(req);
@@ -49,9 +49,9 @@ auto main(int argc, char** argv) -> int {
         req.respond(x + y);
       };
 
-  myEngine.define("sum", sum);
+  my_engine.define("sum", sum);
 
-  myEngine
+  my_engine
       .define("lambda",
               [](const tl::request& req, int x) {
                 UNUSED(req);
@@ -59,19 +59,19 @@ auto main(int argc, char** argv) -> int {
               })
       .disable_response();
 
-  myEngine.define("user_class",
+  my_engine.define("user_class",
                   [](const tl::request& req, const ht::Point& point) {
                     std::cout << "Point class" << point.x << ":" << point.y
                               << ":" << point.z << std::endl;
                     req.respond(point);
                   });
 
-  myEngine
+  my_engine
       .define("shutdown",
-              [&myEngine](const tl::request& req) {
+              [&my_engine](const tl::request& req) {
                 UNUSED(req);
                 std::cout << "server shutdown" << std::endl;
-                myEngine.finalize();
+                my_engine.finalize();
               })
       .disable_response();
 

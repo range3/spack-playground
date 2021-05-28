@@ -20,7 +20,7 @@ find_package(fmt REQUIRED)
 find_package(TBB REQUIRED)
 find_package(Libpmemkv REQUIRED)
 
-target_link_libraries(
-  ${EXE_TARGET_NAME} PRIVATE cxxopts::cxxopts fmt::fmt Libpmemkv::Libpmemkv)
+target_link_libraries(${EXE_TARGET_NAME} PRIVATE cxxopts::cxxopts fmt::fmt
+                                                 Libpmemkv::Libpmemkv)
 
 install(TARGETS ${EXE_TARGET_NAME} DESTINATION "${CMAKE_INSTALL_BINDIR}")
