@@ -43,6 +43,10 @@
   {
    "hash": "v4sqcffpki6lcjcgtgdjng6g7qncd2ee",
    "spec": "pmemkv+cmap+csmap"
+  },
+  {
+   "hash": "p4x7jkmueicx4pkdm2qhcc4tur4rnoap",
+   "spec": "memkind"
   }
  ],
  "concrete_specs": {
