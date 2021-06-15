@@ -139,10 +139,9 @@ endif()
 add_subdirectory(targets)
 
 # Enable testing
-# if(${PROJECT_NAME_UPPERCASE}_BUILD_TESTS)
-#   enable_testing()
-#   add_subdirectory(tests)
-# endif()
+if(${PROJECT_NAME_UPPERCASE}_BUILD_TESTS)
+  add_subdirectory(tests)
+endif()
 
 #[[
 Target ${PROJECT_NAME}_version
