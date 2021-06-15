@@ -5,11 +5,11 @@
  },
  "roots": [
   {
-   "hash": "g52jn4g7dfevfyvqsk5mzi77w2jaatz3",
+   "hash": "qwvee74a3iggtujkhhjs6tmpapau7qvq",
    "spec": "py-cmake-format"
   },
   {
-   "hash": "oqluzzlropmmemambet5ayxdaons7fhg",
+   "hash": "665hfi3yodtqir74zooxdedaqw5o3get",
    "spec": "py-pyyaml"
   },
   {
@@ -33,15 +33,15 @@
    "spec": "fmt"
   },
   {
-   "hash": "mfpvd4drfdirux7gudnpzuhuh4v55gfh",
+   "hash": "gquj3bhhakviaoz5aw7zwa3by2yoz2jr",
    "spec": "pmdk@master+rpmem"
   },
   {
-   "hash": "rz3bnk4osmjezs3i757i5ccn6nfjqjt3",
+   "hash": "65g6jzwo3ogigiawhj3c4qehu37wdn7j",
    "spec": "libpmemobj-cpp"
   },
   {
-   "hash": "5b6bvmrpietogyofhti4nq4b4mgx2nfq",
+   "hash": "ebugfgpaqmsgmci365yta5mgjvuakl2y",
    "spec": "pmemkv+cmap+csmap"
   },
   {
@@ -54,7 +54,7 @@
   }
  ],
  "concrete_specs": {
-  "g52jn4g7dfevfyvqsk5mzi77w2jaatz3": {
+  "qwvee74a3iggtujkhhjs6tmpapau7qvq": {
    "py-cmake-format": {
     "version": "0.6.10",
     "arch": {
@@ -108,31 +108,31 @@
     },
     "dependencies": {
      "py-setuptools": {
-      "hash": "hedvqys75b5eiehqdgykphgiw5ix3pb5",
+      "hash": "q7helrgzgxiafil57mob4k7juebpskxk",
       "type": [
        "build",
        "run"
       ]
      },
      "py-six": {
-      "hash": "iv4jqwvhxgbm6aos5uncnsfpnwhphwor",
+      "hash": "czdmlzdieyvkazvfo7mn2dwqlswdc3qo",
       "type": [
        "build",
        "run"
       ]
      },
      "python": {
-      "hash": "gaztwv3xd5nfacg63baft2ldafjvz7yi",
+      "hash": "s4gifev3wtc675jrjgshipe764wq5lda",
       "type": [
        "build",
        "run"
       ]
      }
     },
-    "hash": "hcv473lra4xpvlgdqsv4l6eg2kuof6pp"
+    "hash": "ue6wyvjhs3iswvehrm4f4kja66ind2au"
    }
   },
-  "hedvqys75b5eiehqdgykphgiw5ix3pb5": {
+  "q7helrgzgxiafil57mob4k7juebpskxk": {
    "py-setuptools": {
     "version": "50.3.2",
     "arch": {
@@ -186,17 +186,17 @@
     },
     "dependencies": {
      "python": {
-      "hash": "gaztwv3xd5nfacg63baft2ldafjvz7yi",
+      "hash": "s4gifev3wtc675jrjgshipe764wq5lda",
       "type": [
        "build",
        "run"
       ]
      }
     },
-    "hash": "kj6vcarzjjk7fi65fap3rvgkvlhcrdgb"
+    "hash": "afydrshodvetmnutkhku3mg4ee3432x2"
    }
   },
-  "gaztwv3xd5nfacg63baft2ldafjvz7yi": {
+  "s4gifev3wtc675jrjgshipe764wq5lda": {
    "python": {
     "version": "3.8.10",
     "arch": {
@@ -290,14 +290,14 @@
       ]
      },
      "gdbm": {
-      "hash": "etn3nq7xn6hhok5fizt6yf23xhfpltgg",
+      "hash": "jsaf32ww7fmyn2thl53gu3hjq3lsdldv",
       "type": [
        "build",
        "link"
       ]
      },
      "gettext": {
-      "hash": "ueqtjfxlqpklmuzfxxdroqt224jq4zhr",
+      "hash": "2pjd5mgbaytmh6vqg5hl22g5a5flwnz4",
       "type": [
        "build",
        "link"
@@ -311,7 +311,7 @@
       ]
      },
      "ncurses": {
-      "hash": "6i5hm4o7cm4sux6ulbszqoxuz6peseny",
+      "hash": "taoujt3fr35t2dkm6k5rexo55vrjrzjt",
       "type": [
        "build",
        "link"
@@ -331,14 +331,14 @@
       ]
      },
      "readline": {
-      "hash": "aiimxeswipvglumtyaug6dvygxvd5hay",
+      "hash": "i5yuu3bz3fpoyqy4ejgh7db5bwx73c5o",
       "type": [
        "build",
        "link"
       ]
      },
      "sqlite": {
-      "hash": "2l2lc5iawfdbr6rjjdn25r43ci6g3n5h",
+      "hash": "3aezzhpkmidbajsyuxygs5aunntu57ki",
       "type": [
        "build",
        "link"
@@ -366,7 +366,7 @@
       ]
      }
     },
-    "hash": "pg47bdubeflupsv2t7z2pgka2ccn55p4"
+    "hash": "ld6oimdnnehnveqixenths4a7wdqgskm"
    }
   },
   "ooqe4l3ddwolldcimrtjslsbs5c74ysi": {
@@ -616,7 +616,7 @@
     "hash": "rlxdkbbvpqhscyssrt6prc5roka3l7xh"
    }
   },
-  "etn3nq7xn6hhok5fizt6yf23xhfpltgg": {
+  "jsaf32ww7fmyn2thl53gu3hjq3lsdldv": {
    "gdbm": {
     "version": "1.19",
     "arch": {
@@ -670,17 +670,17 @@
     },
     "dependencies": {
      "readline": {
-      "hash": "aiimxeswipvglumtyaug6dvygxvd5hay",
+      "hash": "i5yuu3bz3fpoyqy4ejgh7db5bwx73c5o",
       "type": [
        "build",
        "link"
       ]
      }
     },
-    "hash": "j3iauzddtcxo3ta54v4e6giohz6rpazm"
+    "hash": "jsaf32ww7fmyn2thl53gu3hjq3lsdldv"
    }
   },
-  "aiimxeswipvglumtyaug6dvygxvd5hay": {
+  "i5yuu3bz3fpoyqy4ejgh7db5bwx73c5o": {
    "readline": {
     "version": "8.1",
     "arch": {
@@ -734,19 +734,19 @@
     },
     "dependencies": {
      "ncurses": {
-      "hash": "6i5hm4o7cm4sux6ulbszqoxuz6peseny",
+      "hash": "taoujt3fr35t2dkm6k5rexo55vrjrzjt",
       "type": [
        "build",
        "link"
       ]
      }
     },
-    "hash": "edn62epsri5hmq64gpvdc2rite5hmimi"
+    "hash": "i5yuu3bz3fpoyqy4ejgh7db5bwx73c5o"
    }
   },
-  "6i5hm4o7cm4sux6ulbszqoxuz6peseny": {
+  "taoujt3fr35t2dkm6k5rexo55vrjrzjt": {
    "ncurses": {
-    "version": "6.2",
+    "version": "6.2.20200212",
     "arch": {
      "platform": "linux",
      "platform_os": "ubuntu20.04",
@@ -789,8 +789,8 @@
     },
     "namespace": "builtin",
     "parameters": {
-     "abi": "none",
-     "symlinks": false,
+     "abi": "6",
+     "symlinks": true,
      "termlib": true,
      "cflags": [],
      "cppflags": [],
@@ -799,85 +799,15 @@
      "ldflags": [],
      "ldlibs": []
     },
-    "dependencies": {
-     "pkg-config": {
-      "hash": "sdqw2w4likgs75yvuchonmlrtnid3l43",
-      "type": [
-       "build"
-      ]
-     }
-    },
-    "hash": "zzcgd6bmbirdahaereerhjyl4dtcgsca"
-   }
-  },
-  "sdqw2w4likgs75yvuchonmlrtnid3l43": {
-   "pkg-config": {
-    "version": "0.29.1",
-    "arch": {
-     "platform": "linux",
-     "platform_os": "ubuntu20.04",
-     "target": {
-      "name": "skylake",
-      "vendor": "GenuineIntel",
-      "features": [
-       "adx",
-       "aes",
-       "avx",
-       "avx2",
-       "bmi1",
-       "bmi2",
-       "clflushopt",
-       "f16c",
-       "fma",
-       "mmx",
-       "movbe",
-       "pclmulqdq",
-       "popcnt",
-       "rdrand",
-       "rdseed",
-       "sse",
-       "sse2",
-       "sse4_1",
-       "sse4_2",
-       "ssse3",
-       "xsavec",
-       "xsaveopt"
-      ],
-      "generation": 0,
-      "parents": [
-       "broadwell"
-      ]
-     }
-    },
-    "compiler": {
-     "name": "clang",
-     "version": "10.0.0"
-    },
-    "namespace": "builtin",
-    "parameters": {
-     "internal_glib": true,
-     "patches": [
-      "49ffcd644e190dc5efcb2fab491177811ea746c1a526f75d77118c2706574358"
-     ],
-     "cflags": [],
-     "cppflags": [],
-     "cxxflags": [],
-     "fflags": [],
-     "ldflags": [],
-     "ldlibs": []
-    },
     "external": {
-     "path": "/",
+     "path": "/usr",
      "module": null,
      "extra_attributes": {}
     },
-    "patches": [
-     "49ffcd644e190dc5efcb2fab491177811ea746c1a526f75d77118c2706574358"
-    ],
-    "hash": "sdqw2w4likgs75yvuchonmlrtnid3l43"
+    "hash": "taoujt3fr35t2dkm6k5rexo55vrjrzjt"
    }
   },
-  "ueqtjfxlqpklmuzfxxdroqt224jq4zhr": {
+  "2pjd5mgbaytmh6vqg5hl22g5a5flwnz4": {
    "gettext": {
     "version": "0.21",
     "arch": {
@@ -959,7 +889,7 @@
       ]
      },
      "ncurses": {
-      "hash": "6i5hm4o7cm4sux6ulbszqoxuz6peseny",
+      "hash": "taoujt3fr35t2dkm6k5rexo55vrjrzjt",
       "type": [
        "build",
        "link"
@@ -981,7 +911,7 @@
       ]
      }
     },
-    "hash": "obhepkoluuywpyvqqh5ocdbrghe2nbmg"
+    "hash": "dcy6i6wlebq3zkdtaaa34vptzdg4tyqh"
    }
   },
   "chcezegdsqsl7iwruvlmx33hn3mfsgne": {
@@ -1122,6 +1052,73 @@
      }
     },
     "hash": "h6cujbkdm4nzu2eq74a5knjzs3lwwipq"
+   }
+  },
+  "sdqw2w4likgs75yvuchonmlrtnid3l43": {
+   "pkg-config": {
+    "version": "0.29.1",
+    "arch": {
+     "platform": "linux",
+     "platform_os": "ubuntu20.04",
+     "target": {
+      "name": "skylake",
+      "vendor": "GenuineIntel",
+      "features": [
+       "adx",
+       "aes",
+       "avx",
+       "avx2",
+       "bmi1",
+       "bmi2",
+       "clflushopt",
+       "f16c",
+       "fma",
+       "mmx",
+       "movbe",
+       "pclmulqdq",
+       "popcnt",
+       "rdrand",
+       "rdseed",
+       "sse",
+       "sse2",
+       "sse4_1",
+       "sse4_2",
+       "ssse3",
+       "xsavec",
+       "xsaveopt"
+      ],
+      "generation": 0,
+      "parents": [
+       "broadwell"
+      ]
+     }
+    },
+    "compiler": {
+     "name": "clang",
+     "version": "10.0.0"
+    },
+    "namespace": "builtin",
+    "parameters": {
+     "internal_glib": true,
+     "patches": [
+      "49ffcd644e190dc5efcb2fab491177811ea746c1a526f75d77118c2706574358"
+     ],
+     "cflags": [],
+     "cppflags": [],
+     "cxxflags": [],
+     "fflags": [],
+     "ldflags": [],
+     "ldlibs": []
+    },
+    "external": {
+     "path": "/",
+     "module": null,
+     "extra_attributes": {}
+    },
+    "patches": [
+     "49ffcd644e190dc5efcb2fab491177811ea746c1a526f75d77118c2706574358"
+    ],
+    "hash": "sdqw2w4likgs75yvuchonmlrtnid3l43"
    }
   },
   "dhwmqkkoyzibnedxb22ixuvd3w7pr7ww": {
@@ -1430,7 +1427,7 @@
     "hash": "6d6meflrtkc5cfd2anxxyecdjxdo4lwv"
    }
   },
-  "2l2lc5iawfdbr6rjjdn25r43ci6g3n5h": {
+  "3aezzhpkmidbajsyuxygs5aunntu57ki": {
    "sqlite": {
     "version": "3.35.5",
     "arch": {
@@ -1488,7 +1485,7 @@
     },
     "dependencies": {
      "readline": {
-      "hash": "aiimxeswipvglumtyaug6dvygxvd5hay",
+      "hash": "i5yuu3bz3fpoyqy4ejgh7db5bwx73c5o",
       "type": [
        "build",
        "link"
@@ -1502,7 +1499,7 @@
       ]
      }
     },
-    "hash": "guwbso55k2642laatarujiyvnumpab36"
+    "hash": "3aezzhpkmidbajsyuxygs5aunntu57ki"
    }
   },
   "nw2geyo3vrbmvv725mm6afsvly2ppfvz": {
@@ -1568,7 +1565,7 @@
     "hash": "565wgsrhtvbxdt34neunoryz2f5qmdhn"
    }
   },
-  "iv4jqwvhxgbm6aos5uncnsfpnwhphwor": {
+  "czdmlzdieyvkazvfo7mn2dwqlswdc3qo": {
    "py-six": {
     "version": "1.15.0",
     "arch": {
@@ -1622,23 +1619,23 @@
     },
     "dependencies": {
      "py-setuptools": {
-      "hash": "hedvqys75b5eiehqdgykphgiw5ix3pb5",
+      "hash": "q7helrgzgxiafil57mob4k7juebpskxk",
       "type": [
        "build"
       ]
      },
      "python": {
-      "hash": "gaztwv3xd5nfacg63baft2ldafjvz7yi",
+      "hash": "s4gifev3wtc675jrjgshipe764wq5lda",
       "type": [
        "build",
        "run"
       ]
      }
     },
-    "hash": "mskaxjac2ggvpmsz4eoiykc4an3hofh3"
+    "hash": "gicu6vrwb642swznhnhqqprlomhkzawv"
    }
   },
-  "oqluzzlropmmemambet5ayxdaons7fhg": {
+  "665hfi3yodtqir74zooxdedaqw5o3get": {
    "py-pyyaml": {
     "version": "5.3.1",
     "arch": {
@@ -1700,14 +1697,14 @@
       ]
      },
      "python": {
-      "hash": "gaztwv3xd5nfacg63baft2ldafjvz7yi",
+      "hash": "s4gifev3wtc675jrjgshipe764wq5lda",
       "type": [
        "build",
        "run"
       ]
      }
     },
-    "hash": "dhr77c2bxtugztt7nx7vfxllwvglapxg"
+    "hash": "3mzjf5mfj2bomdp7xvkehfdb44rgj5k4"
    }
   },
   "uhh5clsm3wz743y4vzxd7s4zug52am4h": {
@@ -2903,7 +2900,7 @@
     "hash": "ximf3hog4l2simhq4rcz5yrzcemiaknv"
    }
   },
-  "mfpvd4drfdirux7gudnpzuhuh4v55gfh": {
+  "gquj3bhhakviaoz5aw7zwa3by2yoz2jr": {
    "pmdk": {
     "version": "master",
     "arch": {
@@ -2968,17 +2965,17 @@
       ]
      },
      "ncurses": {
-      "hash": "6i5hm4o7cm4sux6ulbszqoxuz6peseny",
+      "hash": "taoujt3fr35t2dkm6k5rexo55vrjrzjt",
       "type": [
        "build",
        "link"
       ]
      }
     },
-    "hash": "3fzekrzfmnud25inxmyx44mk7sjbvhjo"
+    "hash": "gquj3bhhakviaoz5aw7zwa3by2yoz2jr"
    }
   },
-  "rz3bnk4osmjezs3i757i5ccn6nfjqjt3": {
+  "65g6jzwo3ogigiawhj3c4qehu37wdn7j": {
    "libpmemobj-cpp": {
     "version": "1.12",
     "arch": {
@@ -3040,17 +3037,17 @@
       ]
      },
      "pmdk": {
-      "hash": "mfpvd4drfdirux7gudnpzuhuh4v55gfh",
+      "hash": "gquj3bhhakviaoz5aw7zwa3by2yoz2jr",
       "type": [
        "build",
        "link"
       ]
      }
     },
-    "hash": "pl4uuadmilxlak7nfvjsig3slvxxt234"
+    "hash": "e7h7o5o3uqame3tgkn4wgrdhtw3onn42"
    }
   },
-  "5b6bvmrpietogyofhti4nq4b4mgx2nfq": {
+  "ebugfgpaqmsgmci365yta5mgjvuakl2y": {
    "pmemkv": {
     "version": "1.4",
     "arch": {
@@ -3129,7 +3126,7 @@
       ]
      },
      "libpmemobj-cpp": {
-      "hash": "rz3bnk4osmjezs3i757i5ccn6nfjqjt3",
+      "hash": "65g6jzwo3ogigiawhj3c4qehu37wdn7j",
       "type": [
        "build",
        "link"
@@ -3143,7 +3140,7 @@
       ]
      },
      "pmdk": {
-      "hash": "mfpvd4drfdirux7gudnpzuhuh4v55gfh",
+      "hash": "gquj3bhhakviaoz5aw7zwa3by2yoz2jr",
       "type": [
        "build",
        "link"
@@ -3157,7 +3154,7 @@
       ]
      }
     },
-    "hash": "4so2s35vrkk4o67ak4ihdaw2lznelg5k"
+    "hash": "biam4fzwwkufxhdopstfnqkvdzi4ypoo"
    }
   },
   "rsj2vyiprdbm7wwouy33fxhyheumziiv": {
