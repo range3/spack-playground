@@ -5,22 +5,31 @@
 	"build": {
 		"dockerfile": "Dockerfile",
 		// Update 'VARIANT' to pick an Debian / Ubuntu OS version: debian-10, debian-9, ubuntu-20.04, ubuntu-18.04
-		"args": { "VARIANT": "ubuntu-20.04" }
+		"args": {
+			"VARIANT": "ubuntu-20.04"
+		}
 	},
-	"runArgs": [ "--cap-add=SYS_PTRACE", "--security-opt", "seccomp=unconfined"],
-
+	"runArgs": [
+		"--cap-add=SYS_PTRACE",
+		"--security-opt",
+		"seccomp=unconfined"
+	],
 	// Set *default* container specific settings.json values on container create.
-	"settings": { 
-		"terminal.integrated.shell.linux": "/bin/bash",
-		"terminal.integrated.shellArgs.linux": ["-l"],
+	"settings": {
 		"C_Cpp.autocomplete": "Disabled",
 		"C_Cpp.formatting": "Disabled",
 		"C_Cpp.errorSquiggles": "Disabled",
 		"C_Cpp.intelliSenseEngine": "Disabled",
 		"clangd.onConfigChanged": "restart",
 		"clangd.checkUpdates": true,
+		"terminal.integrated.defaultProfile.linux": "bash-login",
+		"terminal.integrated.profiles.linux.bash-login": {
+			"path": "bash",
+			"args": [
+				"-l"
+			]
+		}
 	},
-
 	// Add the IDs of extensions you want installed when the container is created.
 	"extensions": [
 		"ms-vscode.cpptools",
@@ -31,13 +40,10 @@
 		"eamodio.gitlens",
 		"pascalsenn.keyboard-quickfix",
 	],
-
 	// Use 'forwardPorts' to make a list of ports inside the container available locally.
 	// "forwardPorts": [],
-
 	// Use 'postCreateCommand' to run commands after the container is created.
 	// "postCreateCommand": "gcc -v",
-
 	// Comment out connect as root instead. More info: https://aka.ms/vscode-remote/containers/non-root.
 	"remoteUser": "vscode"
 }
