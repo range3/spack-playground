@@ -13,15 +13,15 @@
    "spec": "py-pyyaml"
   },
   {
-   "hash": "3iaicuycwih6wjgcx7pd3lmx6lbkalwn",
+   "hash": "ibj2rr7y6mla5nsfznnulqs7yqgafsn5",
    "spec": "libfabric@1.12.1 fabrics=rxm,sockets,tcp"
   },
   {
-   "hash": "qskudjaj673soo7qmta2beem7ghd5h52",
+   "hash": "jdize4mcx4kssesu54bmqxtoa4nd76sh",
    "spec": "mercury~boostsys+ofi"
   },
   {
-   "hash": "mr67py4vywatru6yzzchdzibjfmw3zja",
+   "hash": "3gufvv63hkpoxc5xtzg42bgoxbgd4vmv",
    "spec": "mochi-thallium"
   },
   {
@@ -33,20 +33,24 @@
    "spec": "fmt"
   },
   {
-   "hash": "khubyqo5tbfokvpkdzjw5gyi2ycoleri",
+   "hash": "mfpvd4drfdirux7gudnpzuhuh4v55gfh",
    "spec": "pmdk@master+rpmem"
   },
   {
-   "hash": "4p4p72fmo2otpbufyjwjm4s3k4sr7ogk",
+   "hash": "rz3bnk4osmjezs3i757i5ccn6nfjqjt3",
    "spec": "libpmemobj-cpp"
   },
   {
-   "hash": "v4sqcffpki6lcjcgtgdjng6g7qncd2ee",
+   "hash": "5b6bvmrpietogyofhti4nq4b4mgx2nfq",
    "spec": "pmemkv+cmap+csmap"
   },
   {
-   "hash": "p4x7jkmueicx4pkdm2qhcc4tur4rnoap",
+   "hash": "tpg7wz3kennymicqyy53usmuequv7kze",
    "spec": "memkind"
+  },
+  {
+   "hash": "bf6ilrlwripe275lprc5rr3bvpcd7cug",
+   "spec": "doctest"
   }
  ],
  "concrete_specs": {
@@ -1761,7 +1765,7 @@
     "hash": "uhh5clsm3wz743y4vzxd7s4zug52am4h"
    }
   },
-  "3iaicuycwih6wjgcx7pd3lmx6lbkalwn": {
+  "ibj2rr7y6mla5nsfznnulqs7yqgafsn5": {
    "libfabric": {
     "version": "1.12.1",
     "arch": {
@@ -1806,6 +1810,7 @@
     },
     "namespace": "mochi",
     "parameters": {
+     "debug": false,
      "disable-spinlocks": false,
      "fabrics": [
       "rxm",
@@ -1820,10 +1825,10 @@
      "ldflags": [],
      "ldlibs": []
     },
-    "hash": "3iaicuycwih6wjgcx7pd3lmx6lbkalwn"
+    "hash": "ibj2rr7y6mla5nsfznnulqs7yqgafsn5"
    }
   },
-  "qskudjaj673soo7qmta2beem7ghd5h52": {
+  "jdize4mcx4kssesu54bmqxtoa4nd76sh": {
    "mercury": {
     "version": "2.0.1",
     "arch": {
@@ -1895,14 +1900,14 @@
       ]
      },
      "libfabric": {
-      "hash": "3iaicuycwih6wjgcx7pd3lmx6lbkalwn",
+      "hash": "ibj2rr7y6mla5nsfznnulqs7yqgafsn5",
       "type": [
        "build",
        "link"
       ]
      }
     },
-    "hash": "rn7ifjmt2zax7lwuwcvq223t3t2jkwtw"
+    "hash": "b52rj23e6kikqxygppjchgeeymnm6rcc"
    }
   },
   "2g4tpcqgykgzhkwnrqfosu5crdfn7iir": {
@@ -1979,7 +1984,7 @@
     "hash": "2g4tpcqgykgzhkwnrqfosu5crdfn7iir"
    }
   },
-  "mr67py4vywatru6yzzchdzibjfmw3zja": {
+  "3gufvv63hkpoxc5xtzg42bgoxbgd4vmv": {
    "mochi-thallium": {
     "version": "0.8.5",
     "arch": {
@@ -2049,7 +2054,7 @@
       ]
      },
      "mochi-margo": {
-      "hash": "qywf2epusl55uk2scugrxk27xqoctytx",
+      "hash": "7qayqfrptcnezob7q5mzk2qh4pkog4s6",
       "type": [
        "build",
        "link"
@@ -2062,7 +2067,7 @@
       ]
      }
     },
-    "hash": "w54eyco77ptl6xuysz7j23xbiofwsqdm"
+    "hash": "t3xkv6grx2c4ms47hoaqa6qhmtujats5"
    }
   },
   "wyyaivissiyjda37bk3zhiy6lcghscey": {
@@ -2142,7 +2147,7 @@
     "hash": "sum6lc5wjb6imoftuw3kq4tbroqyaefc"
    }
   },
-  "qywf2epusl55uk2scugrxk27xqoctytx": {
+  "7qayqfrptcnezob7q5mzk2qh4pkog4s6": {
    "mochi-margo": {
     "version": "0.9.4",
     "arch": {
@@ -2203,13 +2208,13 @@
       ]
      },
      "autoconf": {
-      "hash": "yo33enc23hjwn4bg7fj4jxis4gsjb7ce",
+      "hash": "rtzhnzs6n2kxclllsqmn7idexpyisaja",
       "type": [
        "build"
       ]
      },
      "automake": {
-      "hash": "jbq4r3xunig5u5v5dtmngso5bcnq74dg",
+      "hash": "2yezesxcyimn4ym2yr53gtjhvorwfuxf",
       "type": [
        "build"
       ]
@@ -2222,19 +2227,19 @@
       ]
      },
      "libtool": {
-      "hash": "5xjzjs35hj4443yunh42fet276qgbnma",
+      "hash": "rjgqnk4l3cwnat3q5hseldslqghqhkgb",
       "type": [
        "build"
       ]
      },
      "m4": {
-      "hash": "2d6o2k5wncuiekdjqtlmagre5pzob73n",
+      "hash": "e2b5objr7sfeacuwrlw3bigbxs33w7bx",
       "type": [
        "build"
       ]
      },
      "mercury": {
-      "hash": "qskudjaj673soo7qmta2beem7ghd5h52",
+      "hash": "jdize4mcx4kssesu54bmqxtoa4nd76sh",
       "type": [
        "build",
        "link",
@@ -2248,7 +2253,7 @@
       ]
      }
     },
-    "hash": "p3kyl4zmwjjvmf2e7xczdlbwvmgz7mjt"
+    "hash": "637iinbqdvntlnpkpeyspfuscp4hyihj"
    }
   },
   "xy4ppmcpe3zlade54k54do7lcuroakxf": {
@@ -2313,7 +2318,7 @@
     "hash": "xy4ppmcpe3zlade54k54do7lcuroakxf"
    }
   },
-  "yo33enc23hjwn4bg7fj4jxis4gsjb7ce": {
+  "rtzhnzs6n2kxclllsqmn7idexpyisaja": {
    "autoconf": {
     "version": "2.69",
     "arch": {
@@ -2367,7 +2372,7 @@
     },
     "dependencies": {
      "m4": {
-      "hash": "2d6o2k5wncuiekdjqtlmagre5pzob73n",
+      "hash": "e2b5objr7sfeacuwrlw3bigbxs33w7bx",
       "type": [
        "build",
        "run"
@@ -2381,12 +2386,12 @@
       ]
      }
     },
-    "hash": "yo33enc23hjwn4bg7fj4jxis4gsjb7ce"
+    "hash": "rtzhnzs6n2kxclllsqmn7idexpyisaja"
    }
   },
-  "2d6o2k5wncuiekdjqtlmagre5pzob73n": {
+  "e2b5objr7sfeacuwrlw3bigbxs33w7bx": {
    "m4": {
-    "version": "1.4.18",
+    "version": "1.4.19",
     "arch": {
      "platform": "linux",
      "platform_os": "ubuntu20.04",
@@ -2429,10 +2434,6 @@
     },
     "namespace": "builtin",
     "parameters": {
-     "patches": [
-      "3877ab548f88597ab2327a2230ee048d2d07ace1062efe81fc92e91b7f39cd00",
-      "fc9b61654a3ba1a8d6cd78ce087e7c96366c290bc8d2c299f09828d793b853c8"
-     ],
      "sigsegv": true,
      "cflags": [],
      "cppflags": [],
@@ -2441,10 +2442,6 @@
      "ldflags": [],
      "ldlibs": []
     },
-    "patches": [
-     "3877ab548f88597ab2327a2230ee048d2d07ace1062efe81fc92e91b7f39cd00",
-     "fc9b61654a3ba1a8d6cd78ce087e7c96366c290bc8d2c299f09828d793b853c8"
-    ],
     "dependencies": {
      "libsigsegv": {
       "hash": "mbr56rqzyrw6ubcsbj7k32euawa4563d",
@@ -2454,7 +2451,7 @@
       ]
      }
     },
-    "hash": "2d6o2k5wncuiekdjqtlmagre5pzob73n"
+    "hash": "e2b5objr7sfeacuwrlw3bigbxs33w7bx"
    }
   },
   "mbr56rqzyrw6ubcsbj7k32euawa4563d": {
@@ -2575,7 +2572,7 @@
     "hash": "dbuvwiw2nfpn7s7a6zrtvl6d7326pxq2"
    }
   },
-  "jbq4r3xunig5u5v5dtmngso5bcnq74dg": {
+  "2yezesxcyimn4ym2yr53gtjhvorwfuxf": {
    "automake": {
     "version": "1.16.3",
     "arch": {
@@ -2629,7 +2626,7 @@
     },
     "dependencies": {
      "autoconf": {
-      "hash": "yo33enc23hjwn4bg7fj4jxis4gsjb7ce",
+      "hash": "rtzhnzs6n2kxclllsqmn7idexpyisaja",
       "type": [
        "build"
       ]
@@ -2710,7 +2707,7 @@
     "hash": "at2tl2zjtfxrx663dtrzs2sdsdnlapye"
    }
   },
-  "5xjzjs35hj4443yunh42fet276qgbnma": {
+  "rjgqnk4l3cwnat3q5hseldslqghqhkgb": {
    "libtool": {
     "version": "2.4.6",
     "arch": {
@@ -2764,7 +2761,7 @@
     },
     "dependencies": {
      "m4": {
-      "hash": "2d6o2k5wncuiekdjqtlmagre5pzob73n",
+      "hash": "e2b5objr7sfeacuwrlw3bigbxs33w7bx",
       "type": [
        "build"
       ]
@@ -2906,7 +2903,7 @@
     "hash": "ximf3hog4l2simhq4rcz5yrzcemiaknv"
    }
   },
-  "khubyqo5tbfokvpkdzjw5gyi2ycoleri": {
+  "mfpvd4drfdirux7gudnpzuhuh4v55gfh": {
    "pmdk": {
     "version": "master",
     "arch": {
@@ -2964,7 +2961,7 @@
     },
     "dependencies": {
      "libfabric": {
-      "hash": "3iaicuycwih6wjgcx7pd3lmx6lbkalwn",
+      "hash": "ibj2rr7y6mla5nsfznnulqs7yqgafsn5",
       "type": [
        "build",
        "link"
@@ -2978,10 +2975,10 @@
       ]
      }
     },
-    "hash": "flz4pew4gkqhndd2jk455vfgtkh6clbj"
+    "hash": "3fzekrzfmnud25inxmyx44mk7sjbvhjo"
    }
   },
-  "4p4p72fmo2otpbufyjwjm4s3k4sr7ogk": {
+  "rz3bnk4osmjezs3i757i5ccn6nfjqjt3": {
    "libpmemobj-cpp": {
     "version": "1.12",
     "arch": {
@@ -3043,17 +3040,17 @@
       ]
      },
      "pmdk": {
-      "hash": "khubyqo5tbfokvpkdzjw5gyi2ycoleri",
+      "hash": "mfpvd4drfdirux7gudnpzuhuh4v55gfh",
       "type": [
        "build",
        "link"
       ]
      }
     },
-    "hash": "dkqrbdmllgyuiy2v4bjxijsf2v6fel7s"
+    "hash": "pl4uuadmilxlak7nfvjsig3slvxxt234"
    }
   },
-  "v4sqcffpki6lcjcgtgdjng6g7qncd2ee": {
+  "5b6bvmrpietogyofhti4nq4b4mgx2nfq": {
    "pmemkv": {
     "version": "1.4",
     "arch": {
@@ -3132,21 +3129,21 @@
       ]
      },
      "libpmemobj-cpp": {
-      "hash": "4p4p72fmo2otpbufyjwjm4s3k4sr7ogk",
+      "hash": "rz3bnk4osmjezs3i757i5ccn6nfjqjt3",
       "type": [
        "build",
        "link"
       ]
      },
      "memkind": {
-      "hash": "p4x7jkmueicx4pkdm2qhcc4tur4rnoap",
+      "hash": "tpg7wz3kennymicqyy53usmuequv7kze",
       "type": [
        "build",
        "link"
       ]
      },
      "pmdk": {
-      "hash": "khubyqo5tbfokvpkdzjw5gyi2ycoleri",
+      "hash": "mfpvd4drfdirux7gudnpzuhuh4v55gfh",
       "type": [
        "build",
        "link"
@@ -3160,7 +3157,7 @@
       ]
      }
     },
-    "hash": "xnruqajz24pqw7li2czqaaiiu3zytdlw"
+    "hash": "4so2s35vrkk4o67ak4ihdaw2lznelg5k"
    }
   },
   "rsj2vyiprdbm7wwouy33fxhyheumziiv": {
@@ -3239,7 +3236,7 @@
     "hash": "7q64zcfdneu2vbvsukq3ohrfgsikbdqk"
    }
   },
-  "p4x7jkmueicx4pkdm2qhcc4tur4rnoap": {
+  "tpg7wz3kennymicqyy53usmuequv7kze": {
    "memkind": {
     "version": "1.10.1",
     "arch": {
@@ -3293,31 +3290,31 @@
     },
     "dependencies": {
      "autoconf": {
-      "hash": "yo33enc23hjwn4bg7fj4jxis4gsjb7ce",
+      "hash": "rtzhnzs6n2kxclllsqmn7idexpyisaja",
       "type": [
        "build"
       ]
      },
      "automake": {
-      "hash": "jbq4r3xunig5u5v5dtmngso5bcnq74dg",
+      "hash": "2yezesxcyimn4ym2yr53gtjhvorwfuxf",
       "type": [
        "build"
       ]
      },
      "libtool": {
-      "hash": "5xjzjs35hj4443yunh42fet276qgbnma",
+      "hash": "rjgqnk4l3cwnat3q5hseldslqghqhkgb",
       "type": [
        "build"
       ]
      },
      "m4": {
-      "hash": "2d6o2k5wncuiekdjqtlmagre5pzob73n",
+      "hash": "e2b5objr7sfeacuwrlw3bigbxs33w7bx",
       "type": [
        "build"
       ]
      },
      "numactl": {
-      "hash": "xqa425g65aytcscprgejr2kbxjhsur5v",
+      "hash": "wjm7n7sf42izzhnapecen3zip3akz7br",
       "type": [
        "build",
        "link"
@@ -3327,7 +3324,7 @@
     "hash": "22qnsdilyhmdnxan7lvhbnb4uw7xe7vq"
    }
   },
-  "xqa425g65aytcscprgejr2kbxjhsur5v": {
+  "wjm7n7sf42izzhnapecen3zip3akz7br": {
    "numactl": {
     "version": "2.0.14",
     "arch": {
@@ -3389,25 +3386,25 @@
     ],
     "dependencies": {
      "autoconf": {
-      "hash": "yo33enc23hjwn4bg7fj4jxis4gsjb7ce",
+      "hash": "rtzhnzs6n2kxclllsqmn7idexpyisaja",
       "type": [
        "build"
       ]
      },
      "automake": {
-      "hash": "jbq4r3xunig5u5v5dtmngso5bcnq74dg",
+      "hash": "2yezesxcyimn4ym2yr53gtjhvorwfuxf",
       "type": [
        "build"
       ]
      },
      "libtool": {
-      "hash": "5xjzjs35hj4443yunh42fet276qgbnma",
+      "hash": "rjgqnk4l3cwnat3q5hseldslqghqhkgb",
       "type": [
        "build"
       ]
      },
      "m4": {
-      "hash": "2d6o2k5wncuiekdjqtlmagre5pzob73n",
+      "hash": "e2b5objr7sfeacuwrlw3bigbxs33w7bx",
       "type": [
        "build"
       ]
@@ -3485,6 +3482,72 @@
      }
     },
     "hash": "7lebhaz2ll4lornkpzyswwwdkaoo5rk7"
+   }
+  },
+  "bf6ilrlwripe275lprc5rr3bvpcd7cug": {
+   "doctest": {
+    "version": "2.4.6",
+    "arch": {
+     "platform": "linux",
+     "platform_os": "ubuntu20.04",
+     "target": {
+      "name": "skylake",
+      "vendor": "GenuineIntel",
+      "features": [
+       "adx",
+       "aes",
+       "avx",
+       "avx2",
+       "bmi1",
+       "bmi2",
+       "clflushopt",
+       "f16c",
+       "fma",
+       "mmx",
+       "movbe",
+       "pclmulqdq",
+       "popcnt",
+       "rdrand",
+       "rdseed",
+       "sse",
+       "sse2",
+       "sse4_1",
+       "sse4_2",
+       "ssse3",
+       "xsavec",
+       "xsaveopt"
+      ],
+      "generation": 0,
+      "parents": [
+       "broadwell"
+      ]
+     }
+    },
+    "compiler": {
+     "name": "clang",
+     "version": "10.0.0"
+    },
+    "namespace": "dev",
+    "parameters": {
+     "build_type": "RelWithDebInfo",
+     "ipo": false,
+     "cflags": [],
+     "cppflags": [],
+     "cxxflags": [],
+     "fflags": [],
+     "ldflags": [],
+     "ldlibs": []
+    },
+    "dependencies": {
+     "cmake": {
+      "hash": "2g4tpcqgykgzhkwnrqfosu5crdfn7iir",
+      "type": [
+       "build",
+       "link"
+      ]
+     }
+    },
+    "hash": "bf6ilrlwripe275lprc5rr3bvpcd7cug"
    }
   }
  }
