@@ -84,10 +84,13 @@ auto main(int argc, char* argv[]) -> int {
   // clang-format off
   json benchmark_result = {
     {"params", {
+      {"pool", result["pool"].as<std::string>()},
+      {"poolSize", pool_size},
       {"blockSize", block_size},
       {"stripeSize", stripe_size},
       {"nthreads", nthreads},
       {"totalSize", total_size},
+      {"accessType", op_read ? "read" : "write"},
       {"accessPattern", op_random ? "random" : "sequential"}
     }},
     {"results", {
