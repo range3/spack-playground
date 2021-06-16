@@ -18,13 +18,16 @@ endif()
 find_package(Threads REQUIRED)
 find_package(cxxopts REQUIRED)
 find_package(fmt REQUIRED)
+find_package(nlohmann_json REQUIRED)
 find_package(PkgConfig REQUIRED)
 pkg_check_modules(Libpmem REQUIRED IMPORTED_TARGET libpmem)
 pkg_check_modules(Libpmemblk REQUIRED IMPORTED_TARGET libpmemblk)
 
 target_link_libraries(${EXE_TARGET_NAME} PRIVATE
   Threads::Threads
-  cxxopts::cxxopts fmt::fmt
+  cxxopts::cxxopts
+  fmt::fmt
+  nlohmann_json::nlohmann_json
   ${PROJECT_NAME}::pretty_bytes
   ${PROJECT_NAME}::gen_random_string
   ${PROJECT_NAME}::elapsedtime

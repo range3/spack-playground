@@ -7,15 +7,17 @@
 #include <cxxopts.hpp>
 #include <elapsedtime.hpp>
 #include <gen_random_string.hpp>
+#include <iomanip>
+#include <iostream>
 #include <mutex>
+#include <nlohmann/json.hpp>
 #include <pretty_bytes/pretty_bytes.hpp>
 #include <random>
 #include <sync/barrier.hpp>
 #include <thread>
 #include <vector>
 
-/* size of the pmemblk pool -- 1 GB */
-#define POOL_SIZE ((size_t)(1 << 30))
+using json = nlohmann::json;
 
 auto main(int argc, char* argv[]) -> int {
   cxxopts::Options options("pmemblkbench",
@@ -33,6 +35,8 @@ auto main(int argc, char* argv[]) -> int {
     ("read", "read")
     ("write", "write")
     ("r,random", "randomize block access in a strip unit.")
+    ("v,verbose", "verbose output")
+    ("prettify", "prettify the json output")
   ;
   // clang-format on
 
@@ -57,6 +61,7 @@ auto main(int argc, char* argv[]) -> int {
   bool op_read = result.count("read") != 0U;
   bool op_write = result.count("write") != 0U;
   bool op_random = result.count("random") != 0U;
+  bool op_verbose = result.count("verbose") != 0U;
 
   // check arguments
   if (!op_read && !op_write) {
@@ -76,12 +81,30 @@ auto main(int argc, char* argv[]) -> int {
     return 1;
   }
 
+  // clang-format off
+  json benchmark_result = {
+    {"params", {
+      {"blockSize", block_size},
+      {"stripeSize", stripe_size},
+      {"nthreads", nthreads},
+      {"totalSize", total_size},
+      {"accessPattern", op_random ? "random" : "sequential"}
+    }},
+    {"results", {
+      {"time", 0.0},
+      {"throuput", 0.0},
+    }}
+  };
+  // clang-format on
+
   // print benchmark info
-  fmt::print("block size: {}\n", block_size);
-  fmt::print("stripe size: {}\n", stripe_size);
-  fmt::print("nthreads: {}\n", nthreads);
-  fmt::print("total_size: {}\n", total_size);
-  fmt::print("access pattern: {}\n", op_random ? "random" : "sequential");
+  if (op_verbose) {
+    fmt::print("block size: {}\n", block_size);
+    fmt::print("stripe size: {}\n", stripe_size);
+    fmt::print("nthreads: {}\n", nthreads);
+    fmt::print("total_size: {}\n", total_size);
+    fmt::print("access pattern: {}\n", op_random ? "random" : "sequential");
+  }
 
   PMEMblkpool* pbp;
   size_t nelements;
@@ -151,7 +174,8 @@ auto main(int argc, char* argv[]) -> int {
               break;
             }
           } else {
-            if (pmemblk_read(pbp, &buf[0], static_cast<long long>(block_ofs)) < 0) {
+            if (pmemblk_read(pbp, &buf[0], static_cast<long long>(block_ofs)) <
+                0) {
               perror("pmemblk_read");
               fail.store(true, std::memory_order_release);
               break;
@@ -175,9 +199,20 @@ auto main(int argc, char* argv[]) -> int {
 
   elapsed_time.freeze();
 
-  fmt::print("Elapsed Time: {} msec\n", elapsed_time.msec());
-  fmt::print("Throuput: {} bytes/sec\n",
-             static_cast<double>(total_size) / elapsed_time.sec());
+  benchmark_result["results"]["time"] = elapsed_time.msec();
+  benchmark_result["results"]["throuput"] =
+      static_cast<double>(total_size) / elapsed_time.sec();
+
+  if (op_verbose) {
+    fmt::print("Elapsed Time: {} msec\n", elapsed_time.msec());
+    fmt::print("Throuput: {} bytes/sec\n",
+               static_cast<double>(total_size) / elapsed_time.sec());
+  }
+
+  if (result.count("prettify") != 0U) {
+    std::cout << std::setw(2);
+  }
+  std::cout << benchmark_result << std::endl;
 
   pmemblk_close(pbp);
 }
