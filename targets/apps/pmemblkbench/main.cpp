@@ -91,6 +91,7 @@ auto main(int argc, char* argv[]) -> int {
       {"accessPattern", op_random ? "random" : "sequential"}
     }},
     {"results", {
+      {"success", false},
       {"time", 0.0},
       {"throuput", 0.0},
     }}
@@ -199,16 +200,18 @@ auto main(int argc, char* argv[]) -> int {
 
   elapsed_time.freeze();
 
-  benchmark_result["results"]["time"] = elapsed_time.msec();
-  benchmark_result["results"]["throuput"] =
-      static_cast<double>(total_size) / elapsed_time.sec();
+  benchmark_result["results"]["success"] = !fail;
+  if (!fail) {
+    benchmark_result["results"]["time"] = elapsed_time.msec();
+    benchmark_result["results"]["throuput"] =
+        static_cast<double>(total_size) / elapsed_time.sec();
 
-  if (op_verbose) {
-    fmt::print("Elapsed Time: {} msec\n", elapsed_time.msec());
-    fmt::print("Throuput: {} bytes/sec\n",
-               static_cast<double>(total_size) / elapsed_time.sec());
+    if (op_verbose) {
+      fmt::print("Elapsed Time: {} msec\n", elapsed_time.msec());
+      fmt::print("Throuput: {} bytes/sec\n",
+                 static_cast<double>(total_size) / elapsed_time.sec());
+    }
   }
-
   if (result.count("prettify") != 0U) {
     std::cout << std::setw(2);
   }
