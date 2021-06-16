@@ -1,5 +1,6 @@
 #include <fmt/core.h>
 #include <libpmemblk.h>
+#include <atomic>
 #include <condition_variable>
 #include <cstddef>
 #include <cstdio>
@@ -8,6 +9,7 @@
 #include <gen_random_string.hpp>
 #include <mutex>
 #include <pretty_bytes/pretty_bytes.hpp>
+#include <random>
 #include <sync/barrier.hpp>
 #include <thread>
 #include <vector>
@@ -28,9 +30,9 @@ auto main(int argc, char* argv[]) -> int {
     ("s,stripe", "stripe size (bytes)", cxxopts::value<std::string>()->default_value("512"))
     ("n,nthreads", "number of threads", cxxopts::value<std::string>()->default_value("1"))
     ("t,total", "total array of blocks size (bytes)", cxxopts::value<std::string>()->default_value("1G"))
-    ("read", "read", cxxopts::value<bool>())
-    ("write", "write", cxxopts::value<bool>())
-    ("r,random", "randomize block access", cxxopts::value<bool>()->default_value("false"))
+    ("read", "read")
+    ("write", "write")
+    ("r,random", "randomize block access in a strip unit.")
   ;
   // clang-format on
 
@@ -54,6 +56,7 @@ auto main(int argc, char* argv[]) -> int {
       pretty_bytes::prettyTo<uint64_t>(result["total"].as<std::string>());
   bool op_read = result.count("read") != 0U;
   bool op_write = result.count("write") != 0U;
+  bool op_random = result.count("random") != 0U;
 
   // check arguments
   if (!op_read && !op_write) {
@@ -78,6 +81,7 @@ auto main(int argc, char* argv[]) -> int {
   fmt::print("stripe size: {}\n", stripe_size);
   fmt::print("nthreads: {}\n", nthreads);
   fmt::print("total_size: {}\n", total_size);
+  fmt::print("access pattern: {}\n", op_random ? "random" : "sequential");
 
   PMEMblkpool* pbp;
   size_t nelements;
@@ -101,7 +105,6 @@ auto main(int argc, char* argv[]) -> int {
 
   // how many elements fit into the file?
   nelements = pmemblk_nblock(pbp);
-  // fmt::print("{:d}\t{:d}\n", result["block"].as<size_t>(), nelements);
 
   if (nelements < total_size / block_size) {
     fmt::print(stderr, "Error: The pool size is too small.\n");
@@ -116,37 +119,46 @@ auto main(int argc, char* argv[]) -> int {
   auto blocks_in_strip_unit = strip_unit_size / block_size;
   auto blocks_in_stripe = stripe_size / block_size;
 
+  std::vector<size_t> access_offset(blocks_in_strip_unit);
+  // 0 1 2 3 4 ...
+  std::iota(access_offset.begin(), access_offset.end(), 0);
+  // randomize offset
+  if (op_random) {
+    std::shuffle(access_offset.begin(), access_offset.end(),
+                 std::mt19937{std::random_device{}()});
+  }
+
   std::vector<std::thread> workers;
   sync::barrier wait_for_ready(nthreads + 1);
-  sync::barrier wait_for_begin_timer(nthreads + 1);
+  sync::barrier wait_for_timer(nthreads + 1);
+  std::atomic<bool> fail(false);
 
   for (size_t i = 0; i < nthreads; ++i) {
     workers.emplace_back([&, i] {
-      bool fail = false;
       std::string buf = random_string_data;
       wait_for_ready.enter();
-      wait_for_begin_timer.enter();
+      wait_for_timer.enter();
 
       for (size_t stripe = 0; stripe < stripe_count; ++stripe) {
-        size_t ofs = stripe * blocks_in_stripe + i * blocks_in_strip_unit;
-        size_t ofs_end = ofs + blocks_in_strip_unit;
-        for (size_t block = ofs; block < ofs_end; ++block) {
+        size_t strip_ofs = stripe * blocks_in_stripe + i * blocks_in_strip_unit;
+        for (size_t j = 0; j < blocks_in_strip_unit; ++j) {
+          size_t block_ofs = access_offset[j] + strip_ofs;
           if (op_write) {
             if (pmemblk_write(pbp, random_string_data.data(),
-                              static_cast<long long>(block)) < 0) {
+                              static_cast<long long>(block_ofs)) < 0) {
               perror("pmemblk_write");
-              fail = true;
+              fail.store(true, std::memory_order_release);
               break;
             }
           } else {
-            if (pmemblk_read(pbp, &buf[0], static_cast<long long>(block)) < 0) {
+            if (pmemblk_read(pbp, &buf[0], static_cast<long long>(block_ofs)) < 0) {
               perror("pmemblk_read");
-              fail = true;
+              fail.store(true, std::memory_order_release);
               break;
             }
           }
         }
-        if (fail) {
+        if (fail.load(std::memory_order_acquire)) {
           break;
         }
       }
@@ -155,7 +167,7 @@ auto main(int argc, char* argv[]) -> int {
 
   wait_for_ready.enter();
   et::ElapsedTime elapsed_time;
-  wait_for_begin_timer.enter();
+  wait_for_timer.enter();
 
   for (auto& worker : workers) {
     worker.join();
