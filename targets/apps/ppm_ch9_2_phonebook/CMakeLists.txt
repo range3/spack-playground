@@ -18,16 +18,15 @@ endif()
 
 find_package(cxxopts REQUIRED)
 find_package(fmt REQUIRED)
-find_package(TBB REQUIRED)
-find_package(Libpmemkv REQUIRED)
 find_package(PkgConfig REQUIRED)
 pkg_check_modules(Libpmem REQUIRED IMPORTED_TARGET libpmem)
 pkg_check_modules(Libpmemobj REQUIRED IMPORTED_TARGET libpmemobj)
 pkg_check_modules(Libpmemobj++ REQUIRED IMPORTED_TARGET libpmemobj++)
+pkg_check_modules(Libpmemkv REQUIRED IMPORTED_TARGET libpmemkv)
 
 target_link_libraries(${EXE_TARGET_NAME} PRIVATE
   cxxopts::cxxopts fmt::fmt
-  Libpmemkv::Libpmemkv
+  PkgConfig::Libpmemkv
   PkgConfig::Libpmemobj++
   PkgConfig::Libpmemobj
   PkgConfig::Libpmem)

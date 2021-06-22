@@ -17,8 +17,6 @@ endif()
 
 find_package(cxxopts REQUIRED)
 find_package(fmt REQUIRED)
-find_package(TBB REQUIRED)
-find_package(Libpmemkv REQUIRED)
 find_package(PkgConfig REQUIRED)
 pkg_check_modules(Libpmem REQUIRED IMPORTED_TARGET libpmem)
 pkg_check_modules(Memkind REQUIRED IMPORTED_TARGET memkind)
