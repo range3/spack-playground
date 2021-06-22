@@ -4,16 +4,18 @@
 # configuration settings.
 spack:
   # add package specs to the `specs` list
+  # module load pmdk
+  # - pmdk@master +rpmem
+  # - libpmemobj-cpp
+  # - pmemkv +cmap+csmap
+  # - memkind
   specs:
   - libfabric@1.12.1 fabrics=rxm,sockets,tcp
   - mercury ~boostsys+ofi
   - mochi-thallium
+  - intel-tbb
   - cxxopts
   - fmt
-  - pmdk@master +rpmem
-  - libpmemobj-cpp
-  - pmemkv +cmap+csmap
-  - memkind
   - doctest
   - nlohmann-json
   concretization: together
