@@ -8,6 +8,7 @@
 
 : ${WORK:="/work/NBB/$USER"}
 : ${PMEMBLKBENCH_EXE:="$WORK/spack-playground/build-RelWithDebInfo/bin/pmemblkbench"}
+: ${NUMA_NODE:=0}
 : ${POOL_PATH:="/pmem0/pmemblkbench.pool"}
 : ${POOL_SIZE:=300G}
 : ${TOTAL_SIZE:=256G}
@@ -27,9 +28,13 @@ module load pmdk/20210401
 for access_type in "${access_type_list[@]}"; do
 for iteration in 0 1 2; do
 
-output_file="${POOL_SIZE}_${TOTAL_SIZE}_${STRIPE_SIZE}_${BLOCK_SIZE}_${NTHREADS}_${ACCESS_PATTERN}_${access_type}_${iteration}"
+output_file="${NUMA_NODE}_${POOL_SIZE}_${TOTAL_SIZE}_${STRIPE_SIZE}_${BLOCK_SIZE}_${NTHREADS}_${ACCESS_PATTERN}_${access_type}_${iteration}"
 echo ${output_file}
 
+numactl \
+  --cpunodebind=${NUMA_NODE} \
+  --membind=${NUMA_NODE} \
+  -- \ 
 $PMEMBLKBENCH_EXE \
   --pool $POOL_PATH \
   --pool_size $POOL_SIZE \
