@@ -1,7 +1,7 @@
 #!/usr/bin/bash
 
 OUTPUT_DIR_PATH="$HOME/bench_results/pmem2bench"
-PMEMBLKBENCH_EXE="$HOME/work/spack-playground/build-RelWithDebInfo/bin/pmem2bench"
+PMEM2BENCH_EXE="$HOME/work/spack-playground/build-RelWithDebInfo/bin/pmem2bench"
 POOL_PATH=/mnt/pmem0/$USER/pmem2bench.pool
 POOL_SIZE=64G
 TOTAL_SIZE=64G
@@ -36,7 +36,7 @@ for iteration in 0 1 2; do
 OUTPUT_FILE="${TOTAL_SIZE}_${block_size}_${nthreads}_${access_type}_${access_pattern}_${store_type}_${iteration}"
 echo $OUTPUT_FILE
 
-$PMEMBLKBENCH_EXE \
+$PMEM2BENCH_EXE \
   --file $POOL_PATH \
   --file_size $POOL_SIZE \
   --total $TOTAL_SIZE \
