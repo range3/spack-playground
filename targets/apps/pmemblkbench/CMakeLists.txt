@@ -31,7 +31,7 @@ target_link_libraries(${EXE_TARGET_NAME} PRIVATE
   ${PROJECT_NAME}::pretty_bytes
   ${PROJECT_NAME}::gen_random_string
   ${PROJECT_NAME}::elapsedtime
-  ${PROJECT_NAME}::sync
+  ${PROJECT_NAME}::psync
   PkgConfig::Libpmemblk
   PkgConfig::Libpmem)
 

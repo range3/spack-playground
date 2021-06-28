@@ -3,14 +3,14 @@
 #include <condition_variable>
 #include <mutex>
 
-namespace sync {
-class barrier {
+namespace psync {
+class Barrier {
   size_t nthreads_;
   std::mutex mtx_;
   std::condition_variable cond_;
 
  public:
-  barrier(size_t nthreads) : nthreads_(nthreads) {}
+  Barrier(size_t nthreads) : nthreads_(nthreads) {}
 
   void enter() {
     {
@@ -21,4 +21,4 @@ class barrier {
     }
   }
 };
-}  // namespace sync
+}  // namespace psync

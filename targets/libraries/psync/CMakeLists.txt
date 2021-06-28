@@ -1,8 +1,8 @@
-set(THIS_TARGET_NAME sync)
+set(THIS_TARGET_NAME psync)
 
 # List of HPP (header) library files.
 set(${THIS_TARGET_NAME}_HDR # cmf: sortable
-                            include/sync/barrier.hpp)
+                            include/psync/barrier.hpp)
 
 # List of CPP (source) library files.
 set(${THIS_TARGET_NAME}_SRC # cmf: sortable

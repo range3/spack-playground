@@ -13,7 +13,7 @@
 #include <nlohmann/json.hpp>
 #include <pretty_bytes/pretty_bytes.hpp>
 #include <random>
-#include <sync/barrier.hpp>
+#include <psync/barrier.hpp>
 #include <thread>
 #include <vector>
 
@@ -156,8 +156,8 @@ auto main(int argc, char* argv[]) -> int {
   }
 
   std::vector<std::thread> workers;
-  sync::barrier wait_for_ready(nthreads + 1);
-  sync::barrier wait_for_timer(nthreads + 1);
+  psync::Barrier wait_for_ready(nthreads + 1);
+  psync::Barrier wait_for_timer(nthreads + 1);
   std::atomic<bool> fail(false);
 
   for (size_t i = 0; i < nthreads; ++i) {
