@@ -165,7 +165,7 @@ auto main(int argc, char* argv[]) -> int {
   }
 
   if (pmem2_map_new(&map, cfg, src) != 0) {
-    pmem2_perror("pmem2_config_set_required_store_granularity");
+    pmem2_perror("pmem2_map_new");
     exit(1);
   }
 
@@ -211,7 +211,7 @@ auto main(int argc, char* argv[]) -> int {
         for (size_t j = 0; j < blocks_in_strip_unit; ++j) {
           size_t block_ofs = access_offset[j] + strip_ofs;
           if (op_write) {
-            memcpy_fn(addr + block_ofs * block_size, random_string_data.data(),
+            memcpy_fn(addr + block_ofs * block_size, buf.data(),
                       block_size, memcpy_flag);
           } else {
             memcpy_fn(&buf[0], addr + block_ofs * block_size, block_size,
@@ -224,6 +224,7 @@ auto main(int argc, char* argv[]) -> int {
 
   wait_for_ready.enter();
   et::ElapsedTime elapsed_time;
+  elapsed_time.reset();
   wait_for_timer.enter();
 
   for (auto& worker : workers) {
