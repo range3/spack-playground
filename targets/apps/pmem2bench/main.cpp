@@ -198,6 +198,7 @@ auto main(int argc, char* argv[]) -> int {
   std::vector<std::thread> workers;
   psync::Barrier wait_for_ready(nthreads + 1);
   psync::Barrier wait_for_timer(nthreads + 1);
+  psync::Barrier wait_for_finish(nthreads + 1);
   std::atomic<bool> fail(false);
 
   for (size_t i = 0; i < nthreads; ++i) {
@@ -219,6 +220,7 @@ auto main(int argc, char* argv[]) -> int {
           }
         }
       }
+      wait_for_finish.enter();
     });
   }
 
@@ -227,11 +229,12 @@ auto main(int argc, char* argv[]) -> int {
   elapsed_time.reset();
   wait_for_timer.enter();
 
+  wait_for_finish.enter();
+  elapsed_time.freeze();
+
   for (auto& worker : workers) {
     worker.join();
   }
-
-  elapsed_time.freeze();
 
   benchmark_result["results"]["success"] = !fail;
   if (!fail) {
