@@ -31,6 +31,7 @@ auto main(int argc, char* argv[]) -> int {
   // clang-format off
   options.add_options()
     ("h,help", "Print usage")
+    ("dry-run", "dry-run")
     ("f,file", "/path/to/file", cxxopts::value<std::string>()->default_value("./pmem2bench.file"))
     ("S,file_size", "file size (bytes)", cxxopts::value<std::string>()->default_value("1G"))
     ("b,block", "block size (bytes)", cxxopts::value<std::string>()->default_value("512"))
@@ -69,6 +70,7 @@ auto main(int argc, char* argv[]) -> int {
   bool op_write = result.count("write") != 0U;
   bool op_random = result.count("random") != 0U;
   bool op_verbose = result.count("verbose") != 0U;
+  bool op_dry_run = result.count("dry-run") != 0U;
   enum pmem2_granularity op_granularity;
   if (result["granularity"].as<std::string>() == "page") {
     op_granularity = PMEM2_GRANULARITY_PAGE;
@@ -129,20 +131,22 @@ auto main(int argc, char* argv[]) -> int {
 
   // create the pmemblk pool or open it if it already exists
   int fd;
-  fd = open(result["file"].as<std::string>().c_str(), O_RDWR);
-  if (fd < 0) {
-    if (op_verbose) {
-      std::perror(result["file"].as<std::string>().c_str());
-    }
-    fd = open(result["file"].as<std::string>().c_str(),
-              O_RDWR | O_CREAT | O_EXCL | O_TRUNC, 0666);
+  if (!op_dry_run) {
+    fd = open(result["file"].as<std::string>().c_str(), O_RDWR);
     if (fd < 0) {
-      std::perror(result["file"].as<std::string>().c_str());
-      exit(1);
-    }
-    if (ftruncate64(fd, static_cast<off64_t>(file_size)) != 0) {
-      std::perror("ftruncate64");
-      exit(1);
+      if (op_verbose) {
+        std::perror(result["file"].as<std::string>().c_str());
+      }
+      fd = open(result["file"].as<std::string>().c_str(),
+                O_RDWR | O_CREAT | O_EXCL | O_TRUNC, 0666);
+      if (fd < 0) {
+        std::perror(result["file"].as<std::string>().c_str());
+        exit(1);
+      }
+      if (ftruncate64(fd, static_cast<off64_t>(file_size)) != 0) {
+        std::perror("ftruncate64");
+        exit(1);
+      }
     }
   }
 
@@ -150,28 +154,32 @@ auto main(int argc, char* argv[]) -> int {
   struct pmem2_config* cfg;
   struct pmem2_source* src;
   struct pmem2_map* map;
-  if (pmem2_config_new(&cfg) != 0) {
-    pmem2_perror("pmem2_config_new");
-    exit(1);
-  }
-  if (pmem2_source_from_fd(&src, fd) != 0) {
-    pmem2_perror("pmem2_source_from_fd");
-    exit(1);
-  }
+  char* addr;
+  pmem2_memcpy_fn memcpy_fn;
+  if (!op_dry_run) {
+    if (pmem2_config_new(&cfg) != 0) {
+      pmem2_perror("pmem2_config_new");
+      exit(1);
+    }
+    if (pmem2_source_from_fd(&src, fd) != 0) {
+      pmem2_perror("pmem2_source_from_fd");
+      exit(1);
+    }
 
-  if (pmem2_config_set_required_store_granularity(cfg, op_granularity) != 0) {
-    pmem2_perror("pmem2_config_set_required_store_granularity");
-    exit(1);
-  }
+    if (pmem2_config_set_required_store_granularity(cfg, op_granularity) != 0) {
+      pmem2_perror("pmem2_config_set_required_store_granularity");
+      exit(1);
+    }
 
-  if (pmem2_map_new(&map, cfg, src) != 0) {
-    pmem2_perror("pmem2_map_new");
-    exit(1);
-  }
+    if (pmem2_map_new(&map, cfg, src) != 0) {
+      pmem2_perror("pmem2_map_new");
+      exit(1);
+    }
 
-  // pmem2 functions
-  char* addr = static_cast<char*>(pmem2_map_get_address(map));
-  auto memcpy_fn = pmem2_get_memcpy_fn(map);
+    // pmem2 functions
+    addr = static_cast<char*>(pmem2_map_get_address(map));
+    memcpy_fn = pmem2_get_memcpy_fn(map);
+  }
   unsigned int memcpy_flag =
       op_non_temporal ? PMEM2_F_MEM_NONTEMPORAL : PMEM2_F_MEM_TEMPORAL;
 
@@ -211,9 +219,13 @@ auto main(int argc, char* argv[]) -> int {
         size_t strip_ofs = stripe * blocks_in_stripe + i * blocks_in_strip_unit;
         for (size_t j = 0; j < blocks_in_strip_unit; ++j) {
           size_t block_ofs = access_offset[j] + strip_ofs;
-          if (op_write) {
-            memcpy_fn(addr + block_ofs * block_size, buf.data(),
-                      block_size, memcpy_flag);
+          if (op_dry_run) {
+            fmt::print("t:{}\tblock_idx:{}\tblock_size:{}\n", i, block_ofs,
+                       block_size);
+
+          } else if (op_write) {
+            memcpy_fn(addr + block_ofs * block_size, buf.data(), block_size,
+                      memcpy_flag);
           } else {
             memcpy_fn(&buf[0], addr + block_ofs * block_size, block_size,
                       memcpy_flag);
@@ -253,9 +265,11 @@ auto main(int argc, char* argv[]) -> int {
   }
   std::cout << benchmark_result << std::endl;
 
-  pmem2_map_delete(&map);
-  pmem2_source_delete(&src);
-  pmem2_config_delete(&cfg);
-  close(fd);
+  if (!op_dry_run) {
+    pmem2_map_delete(&map);
+    pmem2_source_delete(&src);
+    pmem2_config_delete(&cfg);
+    close(fd);
+  }
   return 0;
 }
