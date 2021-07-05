@@ -10,7 +10,7 @@ OUTPUT_DIR_PATH="$HOME/bench_results/ior"
 POOL_PATH=/mnt/pmem0/$USER/ior_file
 POOL_SIZE=8G
 TOTAL_SIZE=${POOL_SIZE}
-LABEL=$(date '+%F_%T')-8G
+LABEL=$(date --iso-8601=seconds)-8G
 
 
 option_file_per_procs_list=(

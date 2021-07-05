@@ -5,7 +5,7 @@ PMEM2BENCH_EXE="$HOME/work/spack-playground/build-RelWithDebInfo/bin/pmem2bench"
 POOL_PATH=/mnt/pmem0/$USER/pmem2bench.pool
 POOL_SIZE=8G
 TOTAL_SIZE=8G
-LABEL=$(date '+%F_%T')-8G-all
+LABEL=$(date --iso-8601=seconds)-8G-all
 
 access_pattern_list=(
   ""

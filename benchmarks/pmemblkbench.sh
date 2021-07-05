@@ -5,7 +5,7 @@ PMEMBLKBENCH_EXE="$HOME/work/spack-playground/build-RelWithDebInfo/bin/pmemblkbe
 POOL_PATH=/mnt/pmem0/$USER/pmemblkbench.pool
 POOL_SIZE=100G
 TOTAL_SIZE=64G
-LABEL=$(date '+%F_%T')-64G
+LABEL=$(date --iso-8601=seconds)-64G
 
 access_pattern_list=(
   ""

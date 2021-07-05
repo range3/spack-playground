@@ -2,7 +2,7 @@
 
 WORK="/work/NBB/$USER"
 JOB_SCRIPT="$WORK/spack-playground/benchmarks/pmemblkbench-job.sh"
-LABEL=$(date '+%F_%T')-256G-numa
+LABEL=$(date --iso-8601=seconds)-256G-numa
 export OUTPUT_DIR="$WORK/bench_results/pmemblkbench/${LABEL}"
 export POOL_SIZE=300G
 export TOTAL_SIZE=256G
