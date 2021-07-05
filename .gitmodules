@@ -4,4 +4,4 @@
 
 [submodule "extern/ior"]
 	path = extern/ior
-	url = https://github.com/range3/mochi-spack-packages.git
+	url = https://github.com/range3/ior.git
