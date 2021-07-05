@@ -5,16 +5,17 @@ function pretty_to_byte {
 }
 
 MPIRUN_EXE=mpirun
-IOR_EXE=$HOME/work/io500/bin/ior
+# IOR_EXE=$HOME/work/io500/bin/ior
+IOR_EXE=ior
 OUTPUT_DIR_PATH="$HOME/bench_results/ior"
 POOL_PATH=/mnt/pmem0/$USER/ior_file
 POOL_SIZE=8G
 TOTAL_SIZE=${POOL_SIZE}
-LABEL=$(date --iso-8601=seconds)-8G
+LABEL=$(date --iso-8601=seconds)-8G-PMDK
 
 
 option_file_per_procs_list=(
-  ""
+  # ""
   "-F"
 )
 

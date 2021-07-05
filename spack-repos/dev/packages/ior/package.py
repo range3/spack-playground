@@ -13,6 +13,7 @@ class Ior(AutotoolsPackage):
     homepage = "https://github.com/hpc/ior"
     url      = "https://github.com/hpc/ior/archive/3.2.1.tar.gz"
 
+    version('fix-pmdk', git='https://github.com/range3/ior.git', branch='fix-pmdk')
     version('develop', git='https://github.com/hpc/ior.git', branch='main')
     version('3.3.0', sha256='701f2167f81ef963e227d4c036c4a947a98b5642b7c14c87c8ae657849891528', preferred=True)
     version('3.3.0rc1', sha256='0e42ebf5b5adae60625bf97989c8e2519d41ea2e3d18561d7d5b945625317aa5')
@@ -32,7 +33,7 @@ class Ior(AutotoolsPackage):
     depends_on('hdf5+mpi', when='+hdf5')
     depends_on('parallel-netcdf', when='+ncmpi')
     depends_on('pmdk', when='+pmdk')
-    conflicts('+pmdk', when='@:3.3.0', msg='ior +pmdk can only build @develop')
+    conflicts('+pmdk', when='@3.0.1:3.3.0', msg='ior +pmdk can only build @develop or @fixpmdk')
 
     # The build for 3.2.0 fails if hdf5 is enabled
     # See https://github.com/hpc/ior/pull/124
