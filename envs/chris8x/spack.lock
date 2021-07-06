@@ -25,15 +25,15 @@
    "spec": "libfabric@1.12.0 fabrics=rxm,sockets,tcp,verbs"
   },
   {
-   "hash": "obbezxcfyu6suichslopwbcmii4g37fx",
-   "spec": "pmdk@master+rpmem"
+   "hash": "a4qmmjujkog5rfuaiyk4tfzfwjzlklg3",
+   "spec": "pmdk@master+ndctl+rpmem"
   },
   {
-   "hash": "grgw45lwkvoav2qoos5ri6q6nqswrbf5",
+   "hash": "qqcethd5k7ayrzmt5ta2kqirg2vzmfxy",
    "spec": "libpmemobj-cpp"
   },
   {
-   "hash": "wtmsaydzlm4gqpbb4j4m4yegzzbmz22f",
+   "hash": "qcslhts3oqxt6ecsjpa75e7bcialrd6t",
    "spec": "pmemkv+cmap+csmap"
   },
   {
@@ -49,7 +49,7 @@
    "spec": "nlohmann-json"
   },
   {
-   "hash": "n4fiubtmhix7yfih46ibdpj2yfenlr52",
+   "hash": "hkexen5er7sil675xn7f3w4s2c2lnk4f",
    "spec": "ior@fix-pmdk+pmdk"
   }
  ],
@@ -1382,7 +1382,7 @@
     "hash": "g6pek5v5zxdob4dra3rcnu6ybh4pmrhp"
    }
   },
-  "obbezxcfyu6suichslopwbcmii4g37fx": {
+  "a4qmmjujkog5rfuaiyk4tfzfwjzlklg3": {
    "pmdk": {
     "version": "master",
     "arch": {
@@ -1436,7 +1436,7 @@
     "parameters": {
      "doc": false,
      "experimental": false,
-     "ndctl": false,
+     "ndctl": true,
      "rpmem": true,
      "cflags": [],
      "cppflags": [],
@@ -1461,7 +1461,7 @@
       ]
      }
     },
-    "hash": "obbezxcfyu6suichslopwbcmii4g37fx"
+    "hash": "a4qmmjujkog5rfuaiyk4tfzfwjzlklg3"
    }
   },
   "kd5ews42i32ebtkigkezbw2zqkv6l4o5": {
@@ -1540,7 +1540,7 @@
     "hash": "kd5ews42i32ebtkigkezbw2zqkv6l4o5"
    }
   },
-  "grgw45lwkvoav2qoos5ri6q6nqswrbf5": {
+  "qqcethd5k7ayrzmt5ta2kqirg2vzmfxy": {
    "libpmemobj-cpp": {
     "version": "1.12",
     "arch": {
@@ -1609,17 +1609,17 @@
       ]
      },
      "pmdk": {
-      "hash": "obbezxcfyu6suichslopwbcmii4g37fx",
+      "hash": "a4qmmjujkog5rfuaiyk4tfzfwjzlklg3",
       "type": [
        "build",
        "link"
       ]
      }
     },
-    "hash": "jmzuy3laybteayca6wsfms2tkahhkxvn"
+    "hash": "cx2rvqh4fjqs5nyaxws4o5frd4aovq4k"
    }
   },
-  "wtmsaydzlm4gqpbb4j4m4yegzzbmz22f": {
+  "qcslhts3oqxt6ecsjpa75e7bcialrd6t": {
    "pmemkv": {
     "version": "1.4",
     "arch": {
@@ -1705,7 +1705,7 @@
       ]
      },
      "libpmemobj-cpp": {
-      "hash": "grgw45lwkvoav2qoos5ri6q6nqswrbf5",
+      "hash": "qqcethd5k7ayrzmt5ta2kqirg2vzmfxy",
       "type": [
        "build",
        "link"
@@ -1719,7 +1719,7 @@
       ]
      },
      "pmdk": {
-      "hash": "obbezxcfyu6suichslopwbcmii4g37fx",
+      "hash": "a4qmmjujkog5rfuaiyk4tfzfwjzlklg3",
       "type": [
        "build",
        "link"
@@ -1733,7 +1733,7 @@
       ]
      }
     },
-    "hash": "ikgxlg6yup4kwwnsdrzek4bg2sx5yihl"
+    "hash": "6fhbybo5tvfkpya44itqn65cpg6avtz3"
    }
   },
   "ybgba2btr3m43yc7pra5p4um4lvvc4ch": {
@@ -2234,7 +2234,7 @@
     "hash": "n6si7zizdr7c3obv7n24k4omce6haapj"
    }
   },
-  "n4fiubtmhix7yfih46ibdpj2yfenlr52": {
+  "hkexen5er7sil675xn7f3w4s2c2lnk4f": {
    "ior": {
     "version": "fix-pmdk",
     "arch": {
@@ -2329,14 +2329,14 @@
       ]
      },
      "pmdk": {
-      "hash": "obbezxcfyu6suichslopwbcmii4g37fx",
+      "hash": "a4qmmjujkog5rfuaiyk4tfzfwjzlklg3",
       "type": [
        "build",
        "link"
       ]
      }
     },
-    "hash": "yrsnh3q54uztow3don5z4gkxxsxhmnqv"
+    "hash": "xp6kakweoh27ijw5umgrao6cfivu3vx6"
    }
   },
   "j6j3ft7ytklofkurjz74e67i5kagtp4a": {
