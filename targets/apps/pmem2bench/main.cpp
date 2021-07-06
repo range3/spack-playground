@@ -19,10 +19,14 @@
 #include <psync/barrier.hpp>
 #include <random>
 #include <sstream>
+#include <string>
 #include <thread>
 #include <vector>
+#include "create_pmem2_source.hpp"
 
 using json = nlohmann::json;
+
+const std::vector<std::string> kSourceType = {"fsdax", "devdax", "anon"};
 
 auto main(int argc, char* argv[]) -> int {
   cxxopts::Options options("pmem2bench",
@@ -31,8 +35,9 @@ auto main(int argc, char* argv[]) -> int {
   // clang-format off
   options.add_options()
     ("h,help", "Print usage")
-    ("dry-run", "dry-run")
-    ("f,file", "/path/to/file", cxxopts::value<std::string>()->default_value("./pmem2bench.file"))
+    ("dry-run", "dry run")
+    ("source", "select (fsdax | devdax | anon)", cxxopts::value<std::string>()->default_value("fsdax"))
+    ("p,path", "/path/to/file or device", cxxopts::value<std::string>()->default_value("./pmem2bench.file"))
     ("S,file_size", "file size (bytes)", cxxopts::value<std::string>()->default_value("1G"))
     ("b,block", "block size (bytes)", cxxopts::value<std::string>()->default_value("512"))
     ("s,stripe", "stripe size (bytes)", cxxopts::value<std::string>()->default_value("512"))
@@ -90,6 +95,12 @@ auto main(int argc, char* argv[]) -> int {
     fmt::print(stderr, "Error: --read or --write required \n");
     exit(1);
   }
+  auto op_source = result["source"].as<std::string>();
+  if (std::find(kSourceType.begin(), kSourceType.end(), op_source) ==
+      kSourceType.end()) {
+    fmt::print(stderr, "Error: unknown --source type {}\n", op_source);
+    exit(1);
+  }
 
   if (((total_size % stripe_size) != 0U) || ((total_size % block_size) != 0U) ||
       ((stripe_size % block_size) != 0U) || ((stripe_size % nthreads) != 0U) ||
@@ -101,7 +112,8 @@ auto main(int argc, char* argv[]) -> int {
   // clang-format off
   json benchmark_result = {
     {"params", {
-      {"file", result["file"].as<std::string>()},
+      {"source", result["source"].as<std::string>()},
+      {"path", result["path"].as<std::string>()},
       {"fileSize", file_size},
       {"blockSize", block_size},
       {"stripeSize", stripe_size},
@@ -129,22 +141,22 @@ auto main(int argc, char* argv[]) -> int {
     fmt::print("access pattern: {}\n", op_random ? "random" : "sequential");
   }
 
-  // create the pmemblk pool or open it if it already exists
-  int fd;
+  // create the pmem2 pool or open it if it already exists
+  struct pmem2_source* src;
   if (!op_dry_run) {
-    fd = open(result["file"].as<std::string>().c_str(), O_RDWR);
-    if (fd < 0) {
-      if (op_verbose) {
-        std::perror(result["file"].as<std::string>().c_str());
-      }
-      fd = open(result["file"].as<std::string>().c_str(),
-                O_RDWR | O_CREAT | O_EXCL | O_TRUNC, 0666);
-      if (fd < 0) {
-        std::perror(result["file"].as<std::string>().c_str());
+    if (op_source == "fsdax") {
+      if (!pmb::createPmem2SourceFromFsdax(&src,
+                                           result["path"].as<std::string>(),
+                                           static_cast<off64_t>(file_size))) {
         exit(1);
       }
-      if (ftruncate64(fd, static_cast<off64_t>(file_size)) != 0) {
-        std::perror("ftruncate64");
+    } else if (op_source == "devdax") {
+      if (!pmb::createPmem2SourceFromDevdax(&src,
+                                            result["path"].as<std::string>())) {
+        exit(1);
+      }
+    } else {
+      if (!pmb::createPmem2SourceFromAnonymous(&src, file_size)) {
         exit(1);
       }
     }
@@ -152,17 +164,12 @@ auto main(int argc, char* argv[]) -> int {
 
   // pmem2 config
   struct pmem2_config* cfg;
-  struct pmem2_source* src;
   struct pmem2_map* map;
   char* addr;
   pmem2_memcpy_fn memcpy_fn;
   if (!op_dry_run) {
     if (pmem2_config_new(&cfg) != 0) {
       pmem2_perror("pmem2_config_new");
-      exit(1);
-    }
-    if (pmem2_source_from_fd(&src, fd) != 0) {
-      pmem2_perror("pmem2_source_from_fd");
       exit(1);
     }
 
@@ -220,8 +227,10 @@ auto main(int argc, char* argv[]) -> int {
         for (size_t j = 0; j < blocks_in_strip_unit; ++j) {
           size_t block_ofs = access_offset[j] + strip_ofs;
           if (op_dry_run) {
-            fmt::print("t:{}\tblock_idx:{}\tblock_size:{}\n", i, block_ofs,
-                       block_size);
+            if (op_verbose) {
+              fmt::print("t:{}\tblock_idx:{}\tblock_size:{}\n", i, block_ofs,
+                         block_size);
+            }
 
           } else if (op_write) {
             memcpy_fn(addr + block_ofs * block_size, buf.data(), block_size,
@@ -267,9 +276,12 @@ auto main(int argc, char* argv[]) -> int {
 
   if (!op_dry_run) {
     pmem2_map_delete(&map);
-    pmem2_source_delete(&src);
     pmem2_config_delete(&cfg);
-    close(fd);
+    int fd;
+    if (pmem2_source_get_fd(src, &fd) == 0) {
+      close(fd);
+    }
+    pmem2_source_delete(&src);
   }
   return 0;
 }
