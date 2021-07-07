@@ -23,10 +23,18 @@
 #include <thread>
 #include <vector>
 #include "create_pmem2_source.hpp"
+#include <cstdint>
 
 using json = nlohmann::json;
 
 const std::vector<std::string> kSourceType = {"fsdax", "devdax", "anon"};
+
+extern "C" {
+    void memcpy_erms(void *dst, void *src, size_t size);
+}
+
+thread_local char buf[2*1024*1024];
+// thread_local char* buf;
 
 auto main(int argc, char* argv[]) -> int {
   cxxopts::Options options("pmem2bench",
@@ -50,6 +58,7 @@ auto main(int argc, char* argv[]) -> int {
     ("prettify", "prettify the json output")
     ("g,granularity", "granularity realted to power-fail protected domain should be (page | cacheline | byte)", cxxopts::value<std::string>()->default_value("page"))
     ("non-temporal", "use non-temporal stores")
+    // ("a,align", "Alignment", cxxopts::value<size_t>()->default_value("4096"))
   ;
   // clang-format on
 
@@ -71,6 +80,7 @@ auto main(int argc, char* argv[]) -> int {
       pretty_bytes::prettyTo<uint64_t>(result["nthreads"].as<std::string>());
   auto total_size =
       pretty_bytes::prettyTo<uint64_t>(result["total"].as<std::string>());
+  // auto op_alignment = result["align"].as<size_t>();
   bool op_read = result.count("read") != 0U;
   bool op_write = result.count("write") != 0U;
   bool op_random = result.count("random") != 0U;
@@ -128,6 +138,7 @@ auto main(int argc, char* argv[]) -> int {
       {"success", false},
       {"time", 0.0},
       {"throuput", 0.0},
+      {"addr", 0ULL},
     }}
   };
   // clang-format on
@@ -165,7 +176,7 @@ auto main(int argc, char* argv[]) -> int {
   // pmem2 config
   struct pmem2_config* cfg;
   struct pmem2_map* map;
-  char* addr;
+  char* addr = nullptr;
   pmem2_memcpy_fn memcpy_fn;
   if (!op_dry_run) {
     if (pmem2_config_new(&cfg) != 0) {
@@ -218,7 +229,15 @@ auto main(int argc, char* argv[]) -> int {
 
   for (size_t i = 0; i < nthreads; ++i) {
     workers.emplace_back([&, i] {
-      std::string buf = random_string_data;
+      // buf = (char*)malloc(random_string_data.size());
+      // buf = (char*)malloc(2*1024*1024);
+      // buf = (char*)aligned_alloc(op_alignment, 2*1024*1024);
+      // buf = gbuf + i*2*1024*1024;
+      // uintptr_t iptr = reinterpret_cast<uintptr_t>(buf);
+      // fmt::print("{}: {}, {}, {}, {}\n", i, iptr, iptr%4*1024, iptr%2*1024*1024, iptr/(2*1024*1024));
+      // std::string buf = random_string_data;
+      // memset(buf, 'a', 1*1024*1024);
+      memcpy(buf, random_string_data.data(), random_string_data.size());
       wait_for_ready.enter();
       wait_for_timer.enter();
 
@@ -233,15 +252,19 @@ auto main(int argc, char* argv[]) -> int {
             }
 
           } else if (op_write) {
-            memcpy_fn(addr + block_ofs * block_size, buf.data(), block_size,
+            memcpy_fn(addr + block_ofs * block_size, buf, block_size,
                       memcpy_flag);
+            // memcpy_fn(addr + block_ofs * block_size, buf.data(), block_size,
+            //           memcpy_flag);
           } else {
-            memcpy_fn(&buf[0], addr + block_ofs * block_size, block_size,
-                      memcpy_flag);
+            memcpy(buf, addr + block_ofs * block_size, block_size);
+            // memcpy_erms(&buf[0], addr + block_ofs * block_size, block_size);
+            // std::copy(addr + block_ofs * block_size, addr + (block_ofs+1) * block_size, buf);
           }
         }
       }
       wait_for_finish.enter();
+      // free(buf);
     });
   }
 
@@ -262,6 +285,7 @@ auto main(int argc, char* argv[]) -> int {
     benchmark_result["results"]["time"] = elapsed_time.msec();
     benchmark_result["results"]["throuput"] =
         static_cast<double>(total_size) / elapsed_time.sec();
+    benchmark_result["results"]["addr"] = reinterpret_cast<uintptr_t>(addr);
 
     if (op_verbose) {
       fmt::print("Elapsed Time: {} msec\n", elapsed_time.msec());

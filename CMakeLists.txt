@@ -2,7 +2,7 @@ cmake_minimum_required(VERSION 3.15 FATAL_ERROR)
 project(
   spack_playground
   VERSION 0.1.0
-  LANGUAGES CXX)
+  LANGUAGES CXX ASM)
 string(TOLOWER ${PROJECT_NAME} PROJECT_NAME_LOWERCASE)
 string(TOUPPER ${PROJECT_NAME} PROJECT_NAME_UPPERCASE)
 include(GNUInstallDirs)

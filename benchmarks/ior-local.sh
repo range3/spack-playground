@@ -11,7 +11,8 @@ OUTPUT_DIR_PATH="$HOME/bench_results/ior"
 POOL_PATH=/mnt/pmem0/$USER/ior_file
 POOL_SIZE=8G
 TOTAL_SIZE=${POOL_SIZE}
-LABEL=$(date --iso-8601=seconds)-8G-PMDK
+LABEL=$(date --iso-8601=seconds)-8G-PMDK-nontemporal
+export PMEM_MOVNT_THRESHOLD=0
 
 
 option_file_per_procs_list=(
@@ -47,6 +48,7 @@ echo $OUTPUT_FILE
 $MPIRUN_EXE \
   -x PATH \
   -x LD_LIBRARY_PATH \
+  -x PMEM_MOVNT_THRESHOLD \
   -np $nprocs \
 $IOR_EXE \
   -C \
@@ -60,8 +62,10 @@ $IOR_EXE \
   -t $transfer_size \
   $option_file_per_procs \
   $access_type \
+  -a PMDK \
   > "${OUTPUT_DIR_PATH}/${OUTPUT_FILE}.stdout" \
   2> "${OUTPUT_DIR_PATH}/${OUTPUT_FILE}.stderr"
+# -z 
 
 # drop page cache
 sudo sh -c "echo 1 > /proc/sys/vm/drop_caches"

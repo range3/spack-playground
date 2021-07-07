@@ -1,7 +1,9 @@
 set(EXE_TARGET_NAME pmem2bench)
 
 set(${EXE_TARGET_NAME}_SRC # cmf: sortable
-                           main.cpp)
+                           main.cpp
+                           memcpy_64.S
+                           )
 
 add_executable(${EXE_TARGET_NAME})
 
