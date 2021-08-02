@@ -194,6 +194,7 @@ auto main(int argc, char* argv[]) -> int try {
   psync::Barrier wait_for_finish(nthreads + 1);
   std::atomic<bool> fail(false);
 
+  int ret;
   for (size_t i = 0; i < nthreads; ++i) {
     workers.emplace_back([&, i] {
       std::string buf = random_string_data;
@@ -211,10 +212,15 @@ auto main(int argc, char* argv[]) -> int try {
                   pop, r->objs[block_ofs].data, block_size);
             } else {
               std::pair<char*, size_t> source = {buf.data(), buf.size()};
-              pmemobj_xalloc(pop.handle(), r->objs[block_ofs].data.raw_ptr(),
+              ret = pmemobj_xalloc(pop.handle(), r->objs[block_ofs].data.raw_ptr(),
                              buf.size(), typeid(char).hash_code(),
                              PMEMOBJ_F_MEM_NONTEMPORAL, memcpyConstructor,
                              static_cast<void*>(&source));
+              if(ret != 0) {
+                perror("pmemobj_xalloc");
+                fail.store(true, std::memory_order_release);
+                break;
+              }
             }
 
             // if (!op_alloc) {
@@ -229,6 +235,9 @@ auto main(int argc, char* argv[]) -> int try {
                    static_cast<const void*>(r->objs[block_ofs].data.get()),
                    block_size);
           }
+        }
+        if (fail.load(std::memory_order_acquire)) {
+          break;
         }
       }
       wait_for_finish.enter();
