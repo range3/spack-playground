@@ -30,10 +30,11 @@
 using json = nlohmann::json;
 
 inline auto memcpyConstructor(PMEMobjpool* pop, void* ptr, void* arg) -> int {
-  auto [src, size] = *static_cast<std::pair<char*, size_t>*>(arg);
+  // auto [src, size] = *static_cast<std::pair<char*, size_t>*>(arg);
+  auto* src = static_cast<std::string*>(arg);
   char* dest = static_cast<char*>(ptr);
 
-  pmemobj_memcpy(pop, dest, src, size, PMEMOBJ_F_MEM_NONTEMPORAL);
+  pmemobj_memcpy(pop, dest, src->data(), src->size(), PMEMOBJ_F_MEM_NONTEMPORAL);
 
   return 0;
 }
@@ -211,11 +212,11 @@ auto main(int argc, char* argv[]) -> int try {
               pmem::obj::make_persistent_atomic<char[]>(
                   pop, r->objs[block_ofs].data, block_size);
             } else {
-              std::pair<char*, size_t> source = {buf.data(), buf.size()};
+              // fmt::format("{:08}", block_ofs).copy(buf.data(), 8);
+              // std::pair<char*, size_t> source = {buf.data(), buf.size()};
               ret = pmemobj_xalloc(pop.handle(), r->objs[block_ofs].data.raw_ptr(),
-                             buf.size(), typeid(char).hash_code(),
-                             PMEMOBJ_F_MEM_NONTEMPORAL, memcpyConstructor,
-                             static_cast<void*>(&source));
+                             buf.size(), 0, 0, memcpyConstructor,
+                             static_cast<void*>(&buf));
               if(ret != 0) {
                 perror("pmemobj_xalloc");
                 fail.store(true, std::memory_order_release);
@@ -234,6 +235,7 @@ auto main(int argc, char* argv[]) -> int try {
             memcpy(static_cast<void*>(buf.data()),
                    static_cast<const void*>(r->objs[block_ofs].data.get()),
                    block_size);
+            // fmt::print("{} = {}\n", block_ofs, buf.substr(0, 8));
           }
         }
         if (fail.load(std::memory_order_acquire)) {
@@ -246,6 +248,7 @@ auto main(int argc, char* argv[]) -> int try {
 
   wait_for_ready.enter();
   et::ElapsedTime elapsed_time;
+  elapsed_time.reset();
   wait_for_timer.enter();
   wait_for_finish.enter();
   elapsed_time.freeze();
