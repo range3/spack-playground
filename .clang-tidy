@@ -3,7 +3,9 @@ Checks: >-
   readability-*,
   -readability-convert-member-functions-to-static,
   -readability-magic-numbers,
+  -readability-function-cognitive-complexity,
   modernize-*,
+  -modernize-use-nodiscard,
   clang-diagnostic-*,
   clang-analyzer-*,
   -clang-analyzer-alpha*
