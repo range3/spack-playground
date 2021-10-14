@@ -27,6 +27,7 @@ RUN \
     tree \
     file \
     environment-modules \
+    libtbb-dev \
   # Clean up
   && apt-get autoremove -y \
   && apt-get clean -y \
@@ -35,12 +36,10 @@ RUN \
   && echo 'eval "$(direnv hook bash)"' >> /etc/profile.d/10-direnv.sh
 
 COPY spack.sh /etc/profile.d/03-spack.sh
-COPY --chown=vscode:vscode packages.yaml /home/vscode/.spack/packages.yaml
 
 USER vscode
 RUN \
-  echo "alias less='less -R'" >> /home/vscode/.bash_aliases \
   # spack
-  && git clone https://github.com/spack/spack.git $SPACK_ROOT \
-  && . /etc/profile \
-  && spack compiler find
+  git clone https://github.com/spack/spack.git $SPACK_ROOT
+
+USER root
