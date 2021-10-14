@@ -1,11 +1,29 @@
 # spack-playground
 
-## Env
+## Development
 ```bash
-$ cd /workspaces/spack-playground
-$ spack env create -d envs/dev
-$ spack env activate -p -d envs/dev
-$ spack external find
+cd /workspaces/spack-playground
+spack env activate -d spack/envs/dev
+spack install --keep-stage
+```
+
+## activate IntelliSense provided by clangd
+- the vsode extensions are already installed in the dev container.
+- open vscode command palette
+  - `> clangd: Download language server`
+  - `> Developper: Reload Window`
+
+## Create new spack env if you want
+```bash
+cd /workspaces/spack-playground
+spack env create -d spack/envs/dev2
+spack env activate -d spack/envs/dev2
+spack compiler find
+spack external find
+# edit spack/envs/dev2/spack.yaml
+## suggestion: remove openssl and python from external packages
+spack concretize -f
+spack install --keep-stage
 ```
 
 ## 3rd Party Library License
