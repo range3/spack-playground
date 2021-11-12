@@ -86,7 +86,6 @@ struct ListNode {
 
  private:
   Persistent& persistent_;
-  // LogEntry entry_;
 };
 
 // active -> headNode -> data -> data -> nullptr
