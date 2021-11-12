@@ -4,6 +4,7 @@ Checks: >-
   -readability-convert-member-functions-to-static,
   -readability-magic-numbers,
   -readability-function-cognitive-complexity,
+  -readability-named-parameter,
   modernize-*,
   -modernize-use-nodiscard,
   clang-diagnostic-*,
@@ -48,6 +49,8 @@ CheckOptions:
     value:  lower_case
   - key:    readability-identifier-naming.ProtectedMemberCase
     value:  lower_case
+  - key:    readability-identifier-naming.ProtectedMemberSuffix
+    value:  _
   - key:    readability-identifier-naming.PrivateMemberCase
     value:  lower_case
   - key:    readability-identifier-naming.PrivateMemberSuffix

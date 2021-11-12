@@ -10,43 +10,39 @@
       "spec": "openssl"
     },
     {
-      "hash": "jk5cmi5n2w3gy4oyo3h74fbycmddpk5e",
+      "hash": "6v7z2vsckqcouujeu5e6kxapiezlzcyw",
       "spec": "python"
     },
     {
-      "hash": "lhlowdrfa3gwlpqnsga2vyccdy73bzfp",
+      "hash": "r3v2aykgxhp3mgkeldqhc2h2zgdzxpxo",
       "spec": "py-pip"
     },
     {
-      "hash": "zyvt3tr77bhyljidj33upqsyohzdoyp2",
+      "hash": "cprqaydt5373ryebxbcqkjelq7wmfs3z",
       "spec": "py-cmake-format"
     },
     {
-      "hash": "xxwj23oce2fb573xj2avvsixz7vcqqsd",
+      "hash": "sltjy7qrzjo5zgaf6hdbnvogwynhyfux",
       "spec": "py-pyyaml"
-    },
-    {
-      "hash": "poezbwn5n44sbiq7yvgthnqngz5ocpdq",
-      "spec": "cmake@3.20:"
     },
     {
       "hash": "nvwtr3kf5dfwbfxl44zgyzht4edotlsk",
       "spec": "libfabric@1.12.1 fabrics=rxm,sockets,tcp"
     },
     {
-      "hash": "25zupuj3zdjcltu4ocmtqze5edyfcmpu",
+      "hash": "fbfq7algeqnxo2ooh26bt6i76wzkz3ac",
       "spec": "mercury~boostsys+ofi"
     },
     {
-      "hash": "nqzqkcanvxhaxzbqqfhwgv5ftupkkkmm",
+      "hash": "ihdkhun36v6oxgbmkxtmm3ek77ng5nmz",
       "spec": "mochi-thallium"
     },
     {
-      "hash": "imiflafgekknctzcanqwal7dwjbvgtl7",
+      "hash": "janwxwvbybvj55olgcfjhcdndy2x4g6m",
       "spec": "cxxopts"
     },
     {
-      "hash": "5hydpfhqywizqkhqfj2of57kit6wixhh",
+      "hash": "75morz7mqjmmeryfxi6rlmb62ogkkf2m",
       "spec": "fmt"
     },
     {
@@ -54,11 +50,11 @@
       "spec": "pmdk@master"
     },
     {
-      "hash": "o57h2k54nsgn7tmtyq6sx2fmtvqbvwzi",
+      "hash": "e3lci5xirajbz226ectxojp7nbgxmpw2",
       "spec": "libpmemobj-cpp@1.13.0"
     },
     {
-      "hash": "crxc24sofl3osfnp457tv2b25mxw6jdm",
+      "hash": "l3e7hlkonuobv762bb4gduaxcrfwsfu5",
       "spec": "pmemkv+cmap+csmap"
     },
     {
@@ -66,19 +62,19 @@
       "spec": "memkind"
     },
     {
-      "hash": "osgerodugnexpvy5bn3jdomxa567rurn",
+      "hash": "skvgzqcemfqycyu4akj6e4dgb24rrvlh",
       "spec": "doctest"
     },
     {
-      "hash": "eypb5qksfyehgbzll4k276nufbpt6jno",
+      "hash": "doswpfrfhgaz7rjzf37tzangoxtlhim5",
       "spec": "nlohmann-json"
     },
     {
-      "hash": "qsl7diboefs4v2ygscbim3444gyzctwj",
+      "hash": "q3gbmti2bb6rjn4ysrzqkegsg2bb2tm7",
       "spec": "mpich~fortran"
     },
     {
-      "hash": "2mygjuxawushjq6z5ttrgfvtfb3zx35r",
+      "hash": "2b6d4cwstr7cx6g5pd5kd6exbj73bhu6",
       "spec": "ior@fix-pmdk+pmdk"
     },
     {
@@ -86,7 +82,7 @@
       "spec": "fio+pmdk"
     },
     {
-      "hash": "j4ux4x425ultl6jfyduniah6bmwwzpky",
+      "hash": "yyvqumqwnhvv3teofsth6v2f22s4rx3i",
       "spec": "range-v3"
     }
   ],
@@ -283,7 +279,7 @@
       },
       "hash": "67bozg7pqkomzvwwjdndlrbxkeeb37zu"
     },
-    "jk5cmi5n2w3gy4oyo3h74fbycmddpk5e": {
+    "6v7z2vsckqcouujeu5e6kxapiezlzcyw": {
       "name": "python",
       "version": "3.8.11",
       "arch": {
@@ -392,7 +388,7 @@
         },
         {
           "name": "gettext",
-          "build_hash": "uvapoggzrk6rbcpmjdpqboxtrsf7cbfb",
+          "build_hash": "ugwyoogmymsizcvydul3rua65cbgd22k",
           "type": [
             "build",
             "link"
@@ -423,8 +419,8 @@
           ]
         },
         {
-          "name": "pkgconf",
-          "build_hash": "ps5ctt4uh25iop3yl2jmsvuollo537yb",
+          "name": "pkg-config",
+          "build_hash": "3bxbx3int4u3se5aurwmlse3nv7pfknq",
           "type": [
             "build"
           ]
@@ -447,7 +443,7 @@
         },
         {
           "name": "util-linux-uuid",
-          "build_hash": "jlcb3zqoelcxdrjbmfq2hqgmxfny2fok",
+          "build_hash": "6xjk3j5r2qtptg5cfd6ez6tufcgcsr3j",
           "type": [
             "build",
             "link"
@@ -907,7 +903,7 @@
       },
       "hash": "poopaahtnupbtfjjk2nviorxleal5xhu"
     },
-    "uvapoggzrk6rbcpmjdpqboxtrsf7cbfb": {
+    "ugwyoogmymsizcvydul3rua65cbgd22k": {
       "name": "gettext",
       "version": "0.21",
       "arch": {
@@ -985,7 +981,7 @@
         },
         {
           "name": "libxml2",
-          "build_hash": "qujafj5r5p2t5fldgjwha2grrsbuwxyh",
+          "build_hash": "gwwtfjdhq3seu3wfpu46b7r3n7kwaqnc",
           "type": [
             "build",
             "link"
@@ -1077,7 +1073,7 @@
       },
       "hash": "qxqa6n6es3t3jjwybr35fm525ap7ghux"
     },
-    "qujafj5r5p2t5fldgjwha2grrsbuwxyh": {
+    "gwwtfjdhq3seu3wfpu46b7r3n7kwaqnc": {
       "name": "libxml2",
       "version": "2.9.12",
       "arch": {
@@ -1140,8 +1136,8 @@
           ]
         },
         {
-          "name": "pkgconf",
-          "build_hash": "ps5ctt4uh25iop3yl2jmsvuollo537yb",
+          "name": "pkg-config",
+          "build_hash": "3bxbx3int4u3se5aurwmlse3nv7pfknq",
           "type": [
             "build"
           ]
@@ -1165,9 +1161,9 @@
       ],
       "hash": "5b6imouvaimzmvp42om4xfmvf2rr5prz"
     },
-    "ps5ctt4uh25iop3yl2jmsvuollo537yb": {
-      "name": "pkgconf",
-      "version": "1.8.0",
+    "3bxbx3int4u3se5aurwmlse3nv7pfknq": {
+      "name": "pkg-config",
+      "version": "0.29.1",
       "arch": {
         "platform": "linux",
         "platform_os": "ubuntu20.04",
@@ -1210,6 +1206,10 @@
       },
       "namespace": "builtin",
       "parameters": {
+        "internal_glib": true,
+        "patches": [
+          "49ffcd644e190dc5efcb2fab491177811ea746c1a526f75d77118c2706574358"
+        ],
         "cflags": [],
         "cppflags": [],
         "cxxflags": [],
@@ -1217,7 +1217,15 @@
         "ldflags": [],
         "ldlibs": []
       },
-      "hash": "ps5ctt4uh25iop3yl2jmsvuollo537yb"
+      "external": {
+        "path": "/",
+        "module": null,
+        "extra_attributes": {}
+      },
+      "patches": [
+        "49ffcd644e190dc5efcb2fab491177811ea746c1a526f75d77118c2706574358"
+      ],
+      "hash": "3bxbx3int4u3se5aurwmlse3nv7pfknq"
     },
     "cklovawryof4px27tidq7vnppnnxi2za": {
       "name": "xz",
@@ -1478,7 +1486,7 @@
       ],
       "hash": "b5kikwfihg6j6g7mvzlshem3ttnr5gii"
     },
-    "jlcb3zqoelcxdrjbmfq2hqgmxfny2fok": {
+    "6xjk3j5r2qtptg5cfd6ez6tufcgcsr3j": {
       "name": "util-linux-uuid",
       "version": "2.36.2",
       "arch": {
@@ -1532,8 +1540,8 @@
       },
       "dependencies": [
         {
-          "name": "pkgconf",
-          "build_hash": "ps5ctt4uh25iop3yl2jmsvuollo537yb",
+          "name": "pkg-config",
+          "build_hash": "3bxbx3int4u3se5aurwmlse3nv7pfknq",
           "type": [
             "build"
           ]
@@ -1541,7 +1549,7 @@
       ],
       "hash": "7i7fpabzevigohwg3q42k2r6jel4ghzy"
     },
-    "lhlowdrfa3gwlpqnsga2vyccdy73bzfp": {
+    "r3v2aykgxhp3mgkeldqhc2h2zgdzxpxo": {
       "name": "py-pip",
       "version": "21.1.2",
       "arch": {
@@ -1596,7 +1604,7 @@
       "dependencies": [
         {
           "name": "py-setuptools",
-          "build_hash": "zxeubqisxfqmsjivuuinflk7gtl2wjbs",
+          "build_hash": "4ugrmfffat6st35nxzns4pfilkadlft4",
           "type": [
             "build",
             "run"
@@ -1604,7 +1612,7 @@
         },
         {
           "name": "python",
-          "build_hash": "jk5cmi5n2w3gy4oyo3h74fbycmddpk5e",
+          "build_hash": "6v7z2vsckqcouujeu5e6kxapiezlzcyw",
           "type": [
             "build",
             "run"
@@ -1613,7 +1621,7 @@
       ],
       "hash": "obfsdxgatvb6c7cr5yf2jwgodzqepbbb"
     },
-    "zxeubqisxfqmsjivuuinflk7gtl2wjbs": {
+    "4ugrmfffat6st35nxzns4pfilkadlft4": {
       "name": "py-setuptools",
       "version": "57.4.0",
       "arch": {
@@ -1668,7 +1676,7 @@
       "dependencies": [
         {
           "name": "python",
-          "build_hash": "jk5cmi5n2w3gy4oyo3h74fbycmddpk5e",
+          "build_hash": "6v7z2vsckqcouujeu5e6kxapiezlzcyw",
           "type": [
             "build",
             "run"
@@ -1677,7 +1685,7 @@
       ],
       "hash": "dozz5jnor3b4ig2hu63td23kdf7zy3ds"
     },
-    "zyvt3tr77bhyljidj33upqsyohzdoyp2": {
+    "cprqaydt5373ryebxbcqkjelq7wmfs3z": {
       "name": "py-cmake-format",
       "version": "0.6.10",
       "arch": {
@@ -1732,7 +1740,7 @@
       "dependencies": [
         {
           "name": "py-setuptools",
-          "build_hash": "zxeubqisxfqmsjivuuinflk7gtl2wjbs",
+          "build_hash": "4ugrmfffat6st35nxzns4pfilkadlft4",
           "type": [
             "build",
             "run"
@@ -1740,7 +1748,7 @@
         },
         {
           "name": "py-six",
-          "build_hash": "srvvtwgvamw5skeokriy5w6zsi2yo2r7",
+          "build_hash": "fcsylppug6pdpdt6zbltfga64okrf4f4",
           "type": [
             "build",
             "run"
@@ -1748,7 +1756,7 @@
         },
         {
           "name": "python",
-          "build_hash": "jk5cmi5n2w3gy4oyo3h74fbycmddpk5e",
+          "build_hash": "6v7z2vsckqcouujeu5e6kxapiezlzcyw",
           "type": [
             "build",
             "run"
@@ -1757,7 +1765,7 @@
       ],
       "hash": "y55iq3zu2hjf4bgdkgxfjri2kwhdbssg"
     },
-    "srvvtwgvamw5skeokriy5w6zsi2yo2r7": {
+    "fcsylppug6pdpdt6zbltfga64okrf4f4": {
       "name": "py-six",
       "version": "1.16.0",
       "arch": {
@@ -1812,14 +1820,14 @@
       "dependencies": [
         {
           "name": "py-setuptools",
-          "build_hash": "zxeubqisxfqmsjivuuinflk7gtl2wjbs",
+          "build_hash": "4ugrmfffat6st35nxzns4pfilkadlft4",
           "type": [
             "build"
           ]
         },
         {
           "name": "python",
-          "build_hash": "jk5cmi5n2w3gy4oyo3h74fbycmddpk5e",
+          "build_hash": "6v7z2vsckqcouujeu5e6kxapiezlzcyw",
           "type": [
             "build",
             "run"
@@ -1828,7 +1836,7 @@
       ],
       "hash": "vnlndup3ka77g5ipfsv377cbdaukqlw5"
     },
-    "xxwj23oce2fb573xj2avvsixz7vcqqsd": {
+    "sltjy7qrzjo5zgaf6hdbnvogwynhyfux": {
       "name": "py-pyyaml",
       "version": "5.3.1",
       "arch": {
@@ -1892,7 +1900,7 @@
         },
         {
           "name": "python",
-          "build_hash": "jk5cmi5n2w3gy4oyo3h74fbycmddpk5e",
+          "build_hash": "6v7z2vsckqcouujeu5e6kxapiezlzcyw",
           "type": [
             "build",
             "run"
@@ -1954,84 +1962,6 @@
         "ldlibs": []
       },
       "hash": "armyxeyvykoyym262abjdr6pq2j3e5mo"
-    },
-    "poezbwn5n44sbiq7yvgthnqngz5ocpdq": {
-      "name": "cmake",
-      "version": "3.21.3",
-      "arch": {
-        "platform": "linux",
-        "platform_os": "ubuntu20.04",
-        "target": {
-          "name": "skylake",
-          "vendor": "GenuineIntel",
-          "features": [
-            "adx",
-            "aes",
-            "avx",
-            "avx2",
-            "bmi1",
-            "bmi2",
-            "clflushopt",
-            "f16c",
-            "fma",
-            "mmx",
-            "movbe",
-            "pclmulqdq",
-            "popcnt",
-            "rdrand",
-            "rdseed",
-            "sse",
-            "sse2",
-            "sse4_1",
-            "sse4_2",
-            "ssse3",
-            "xsavec",
-            "xsaveopt"
-          ],
-          "generation": 0,
-          "parents": [
-            "broadwell"
-          ]
-        }
-      },
-      "compiler": {
-        "name": "clang",
-        "version": "10.0.0"
-      },
-      "namespace": "builtin",
-      "parameters": {
-        "build_type": "Release",
-        "doc": false,
-        "ncurses": true,
-        "openssl": true,
-        "ownlibs": true,
-        "qt": false,
-        "cflags": [],
-        "cppflags": [],
-        "cxxflags": [],
-        "fflags": [],
-        "ldflags": [],
-        "ldlibs": []
-      },
-      "dependencies": [
-        {
-          "name": "ncurses",
-          "build_hash": "poopaahtnupbtfjjk2nviorxleal5xhu",
-          "type": [
-            "build",
-            "link"
-          ]
-        },
-        {
-          "name": "openssl",
-          "build_hash": "tdxzekddfchbmkombtagabkgz573mq6u",
-          "type": [
-            "build",
-            "link"
-          ]
-        }
-      ],
-      "hash": "u5lqzalpkvpkcr2agstaoc3uhtzyt4jb"
     },
     "nvwtr3kf5dfwbfxl44zgyzht4edotlsk": {
       "name": "libfabric",
@@ -2095,7 +2025,7 @@
       },
       "hash": "nvwtr3kf5dfwbfxl44zgyzht4edotlsk"
     },
-    "25zupuj3zdjcltu4ocmtqze5edyfcmpu": {
+    "fbfq7algeqnxo2ooh26bt6i76wzkz3ac": {
       "name": "mercury",
       "version": "2.0.1",
       "arch": {
@@ -2162,7 +2092,7 @@
       "dependencies": [
         {
           "name": "cmake",
-          "build_hash": "poezbwn5n44sbiq7yvgthnqngz5ocpdq",
+          "build_hash": "6hoo4gon7db5x6jalpjar3ndxuiorpkc",
           "type": [
             "build"
           ]
@@ -2178,7 +2108,80 @@
       ],
       "hash": "7dqviugd4dciqo6tedoydjgbkbkbafqx"
     },
-    "nqzqkcanvxhaxzbqqfhwgv5ftupkkkmm": {
+    "6hoo4gon7db5x6jalpjar3ndxuiorpkc": {
+      "name": "cmake",
+      "version": "3.16.3",
+      "arch": {
+        "platform": "linux",
+        "platform_os": "ubuntu20.04",
+        "target": {
+          "name": "skylake",
+          "vendor": "GenuineIntel",
+          "features": [
+            "adx",
+            "aes",
+            "avx",
+            "avx2",
+            "bmi1",
+            "bmi2",
+            "clflushopt",
+            "f16c",
+            "fma",
+            "mmx",
+            "movbe",
+            "pclmulqdq",
+            "popcnt",
+            "rdrand",
+            "rdseed",
+            "sse",
+            "sse2",
+            "sse4_1",
+            "sse4_2",
+            "ssse3",
+            "xsavec",
+            "xsaveopt"
+          ],
+          "generation": 0,
+          "parents": [
+            "broadwell"
+          ]
+        }
+      },
+      "compiler": {
+        "name": "clang",
+        "version": "10.0.0"
+      },
+      "namespace": "builtin",
+      "parameters": {
+        "build_type": "Release",
+        "doc": false,
+        "ncurses": true,
+        "openssl": true,
+        "ownlibs": true,
+        "patches": [
+          "1c540040c7e203dd8e27aa20345ecb07fe06570d56410a24a266ae570b1c4c39",
+          "bf695e3febb222da2ed94b3beea600650e4318975da90e4a71d6f31a6d5d8c3d"
+        ],
+        "qt": false,
+        "cflags": [],
+        "cppflags": [],
+        "cxxflags": [],
+        "fflags": [],
+        "ldflags": [],
+        "ldlibs": []
+      },
+      "external": {
+        "path": "/",
+        "module": null,
+        "extra_attributes": {}
+      },
+      "patches": [
+        "1c540040c7e203dd8e27aa20345ecb07fe06570d56410a24a266ae570b1c4c39",
+        "bf695e3febb222da2ed94b3beea600650e4318975da90e4a71d6f31a6d5d8c3d"
+      ],
+      "hash": "6hoo4gon7db5x6jalpjar3ndxuiorpkc"
+    },
+    "ihdkhun36v6oxgbmkxtmm3ek77ng5nmz": {
       "name": "mochi-thallium",
       "version": "0.8.5",
       "arch": {
@@ -2236,7 +2239,7 @@
       "dependencies": [
         {
           "name": "cereal",
-          "build_hash": "oijslw7jyzfas4lwvpgncqutpks2bo5n",
+          "build_hash": "wwmkwsggspwb25finarw6abp6qpke5sb",
           "type": [
             "build",
             "link"
@@ -2244,22 +2247,22 @@
         },
         {
           "name": "cmake",
-          "build_hash": "poezbwn5n44sbiq7yvgthnqngz5ocpdq",
+          "build_hash": "6hoo4gon7db5x6jalpjar3ndxuiorpkc",
           "type": [
             "build"
           ]
         },
         {
           "name": "mochi-margo",
-          "build_hash": "croqdgzb6eayjmzmbblkqmvseulaxeiz",
+          "build_hash": "43mlsql4vezcye634hd4z4qdirakg53e",
           "type": [
             "build",
             "link"
           ]
         },
         {
-          "name": "pkgconf",
-          "build_hash": "ps5ctt4uh25iop3yl2jmsvuollo537yb",
+          "name": "pkg-config",
+          "build_hash": "3bxbx3int4u3se5aurwmlse3nv7pfknq",
           "type": [
             "build"
           ]
@@ -2267,7 +2270,7 @@
       ],
       "hash": "x7xcymb45l5k6jermd42bcqwgpisbvvd"
     },
-    "oijslw7jyzfas4lwvpgncqutpks2bo5n": {
+    "wwmkwsggspwb25finarw6abp6qpke5sb": {
       "name": "cereal",
       "version": "1.3.0",
       "arch": {
@@ -2336,7 +2339,7 @@
       "dependencies": [
         {
           "name": "cmake",
-          "build_hash": "poezbwn5n44sbiq7yvgthnqngz5ocpdq",
+          "build_hash": "6hoo4gon7db5x6jalpjar3ndxuiorpkc",
           "type": [
             "build"
           ]
@@ -2344,7 +2347,7 @@
       ],
       "hash": "pzmw6r5xafu2q7ofxj6dklduhk53hhan"
     },
-    "croqdgzb6eayjmzmbblkqmvseulaxeiz": {
+    "43mlsql4vezcye634hd4z4qdirakg53e": {
       "name": "mochi-margo",
       "version": "0.9.4",
       "arch": {
@@ -2421,7 +2424,7 @@
         },
         {
           "name": "json-c",
-          "build_hash": "ckfr4nvnvrpat7rv5pt4ddtdq2vrt33f",
+          "build_hash": "unt7cqkgk3rlrkb3oemor3o444446qmq",
           "type": [
             "build",
             "link"
@@ -2443,7 +2446,7 @@
         },
         {
           "name": "mercury",
-          "build_hash": "25zupuj3zdjcltu4ocmtqze5edyfcmpu",
+          "build_hash": "fbfq7algeqnxo2ooh26bt6i76wzkz3ac",
           "type": [
             "build",
             "link",
@@ -2451,8 +2454,8 @@
           ]
         },
         {
-          "name": "pkgconf",
-          "build_hash": "ps5ctt4uh25iop3yl2jmsvuollo537yb",
+          "name": "pkg-config",
+          "build_hash": "3bxbx3int4u3se5aurwmlse3nv7pfknq",
           "type": [
             "build"
           ]
@@ -2801,7 +2804,7 @@
       ],
       "hash": "o7fr76wqbydjdgl24natiyc6o47s35ll"
     },
-    "ckfr4nvnvrpat7rv5pt4ddtdq2vrt33f": {
+    "unt7cqkgk3rlrkb3oemor3o444446qmq": {
       "name": "json-c",
       "version": "0.15",
       "arch": {
@@ -2858,7 +2861,7 @@
       "dependencies": [
         {
           "name": "cmake",
-          "build_hash": "poezbwn5n44sbiq7yvgthnqngz5ocpdq",
+          "build_hash": "6hoo4gon7db5x6jalpjar3ndxuiorpkc",
           "type": [
             "build"
           ]
@@ -2929,7 +2932,7 @@
       ],
       "hash": "iaqspetxwugyc3wyyabxd5u2spiqjyfb"
     },
-    "imiflafgekknctzcanqwal7dwjbvgtl7": {
+    "janwxwvbybvj55olgcfjhcdndy2x4g6m": {
       "name": "cxxopts",
       "version": "2.2.1",
       "arch": {
@@ -2987,7 +2990,7 @@
       "dependencies": [
         {
           "name": "cmake",
-          "build_hash": "poezbwn5n44sbiq7yvgthnqngz5ocpdq",
+          "build_hash": "6hoo4gon7db5x6jalpjar3ndxuiorpkc",
           "type": [
             "build"
           ]
@@ -2995,7 +2998,7 @@
       ],
       "hash": "4d4h6ynmlavxmzivjibxosvjat5okzei"
     },
-    "5hydpfhqywizqkhqfj2of57kit6wixhh": {
+    "75morz7mqjmmeryfxi6rlmb62ogkkf2m": {
       "name": "fmt",
       "version": "8.0.1",
       "arch": {
@@ -3055,7 +3058,7 @@
       "dependencies": [
         {
           "name": "cmake",
-          "build_hash": "poezbwn5n44sbiq7yvgthnqngz5ocpdq",
+          "build_hash": "6hoo4gon7db5x6jalpjar3ndxuiorpkc",
           "type": [
             "build"
           ]
@@ -3131,7 +3134,7 @@
       ],
       "hash": "om4xixpvld2rmogfaskqedorfiyjvlpg"
     },
-    "o57h2k54nsgn7tmtyq6sx2fmtvqbvwzi": {
+    "e3lci5xirajbz226ectxojp7nbgxmpw2": {
       "name": "libpmemobj-cpp",
       "version": "1.13.0",
       "arch": {
@@ -3194,7 +3197,7 @@
       "dependencies": [
         {
           "name": "cmake",
-          "build_hash": "poezbwn5n44sbiq7yvgthnqngz5ocpdq",
+          "build_hash": "6hoo4gon7db5x6jalpjar3ndxuiorpkc",
           "type": [
             "build"
           ]
@@ -3210,7 +3213,7 @@
       ],
       "hash": "l6wgolsoa4acydn6sn5pybdac3rh36bj"
     },
-    "crxc24sofl3osfnp457tv2b25mxw6jdm": {
+    "l3e7hlkonuobv762bb4gduaxcrfwsfu5": {
       "name": "pmemkv",
       "version": "1.4",
       "arch": {
@@ -3276,7 +3279,7 @@
       "dependencies": [
         {
           "name": "cmake",
-          "build_hash": "poezbwn5n44sbiq7yvgthnqngz5ocpdq",
+          "build_hash": "6hoo4gon7db5x6jalpjar3ndxuiorpkc",
           "type": [
             "build",
             "link"
@@ -3284,7 +3287,7 @@
         },
         {
           "name": "intel-tbb",
-          "build_hash": "2zikpxh5irped4jdpvledxitrkqmayys",
+          "build_hash": "yjcqveyxcwiwxa6a6fcsbzx4frjrgc6g",
           "type": [
             "build",
             "link"
@@ -3292,7 +3295,7 @@
         },
         {
           "name": "libpmemobj-cpp",
-          "build_hash": "o57h2k54nsgn7tmtyq6sx2fmtvqbvwzi",
+          "build_hash": "e3lci5xirajbz226ectxojp7nbgxmpw2",
           "type": [
             "build",
             "link"
@@ -3316,16 +3319,16 @@
         },
         {
           "name": "rapidjson",
-          "build_hash": "egjqlnlwchrportixpioiqxfketcfipl",
+          "build_hash": "mbzjfz2ckzydefyjwwe7clolmpgtgu6g",
           "type": [
             "build",
             "link"
           ]
         }
       ],
-      "hash": "c3pr2vyrz2uwd3i2pmmm4tb2byibjvhm"
+      "hash": "ru2gpflduzf2iz4knvn7dgw7hav7bmp4"
     },
-    "2zikpxh5irped4jdpvledxitrkqmayys": {
+    "yjcqveyxcwiwxa6a6fcsbzx4frjrgc6g": {
       "name": "intel-tbb",
       "version": "2020.3",
       "arch": {
@@ -3395,7 +3398,7 @@
       "dependencies": [
         {
           "name": "cmake",
-          "build_hash": "poezbwn5n44sbiq7yvgthnqngz5ocpdq",
+          "build_hash": "6hoo4gon7db5x6jalpjar3ndxuiorpkc",
           "type": [
             "build"
           ]
@@ -3589,7 +3592,7 @@
       ],
       "hash": "y7vzupvjax2saegbgxqg7tcjcfrribi2"
     },
-    "egjqlnlwchrportixpioiqxfketcfipl": {
+    "mbzjfz2ckzydefyjwwe7clolmpgtgu6g": {
       "name": "rapidjson",
       "version": "1.1.0",
       "arch": {
@@ -3652,7 +3655,7 @@
       "dependencies": [
         {
           "name": "cmake",
-          "build_hash": "poezbwn5n44sbiq7yvgthnqngz5ocpdq",
+          "build_hash": "6hoo4gon7db5x6jalpjar3ndxuiorpkc",
           "type": [
             "build"
           ]
@@ -3660,7 +3663,7 @@
       ],
       "hash": "44jrghfyrcrylz3ijhbezykmjufrwqec"
     },
-    "osgerodugnexpvy5bn3jdomxa567rurn": {
+    "skvgzqcemfqycyu4akj6e4dgb24rrvlh": {
       "name": "doctest",
       "version": "2.4.6",
       "arch": {
@@ -3717,16 +3720,16 @@
       "dependencies": [
         {
           "name": "cmake",
-          "build_hash": "poezbwn5n44sbiq7yvgthnqngz5ocpdq",
+          "build_hash": "6hoo4gon7db5x6jalpjar3ndxuiorpkc",
           "type": [
             "build",
             "link"
           ]
         }
       ],
-      "hash": "hnrlqon6y2tqpjrwxz7tmezpa7qqglqq"
+      "hash": "r2ejl3vwrlt4meknjar5adjmtjtsxwid"
     },
-    "eypb5qksfyehgbzll4k276nufbpt6jno": {
+    "doswpfrfhgaz7rjzf37tzangoxtlhim5": {
       "name": "nlohmann-json",
       "version": "3.10.2",
       "arch": {
@@ -3784,7 +3787,7 @@
       "dependencies": [
         {
           "name": "cmake",
-          "build_hash": "poezbwn5n44sbiq7yvgthnqngz5ocpdq",
+          "build_hash": "6hoo4gon7db5x6jalpjar3ndxuiorpkc",
           "type": [
             "build"
           ]
@@ -3792,7 +3795,7 @@
       ],
       "hash": "eryqwx3xlk2j6vki3uvmlehevkjlqomi"
     },
-    "qsl7diboefs4v2ygscbim3444gyzctwj": {
+    "q3gbmti2bb6rjn4ysrzqkegsg2bb2tm7": {
       "name": "mpich",
       "version": "3.3.2",
       "arch": {
@@ -3888,7 +3891,7 @@
         },
         {
           "name": "hwloc",
-          "build_hash": "rx7c5v7gcjyf34dl5bv6l7pag3tp6ctu",
+          "build_hash": "jv6txh5xe6iefkvoibcoelj6f4vqh3ax",
           "type": [
             "build",
             "link"
@@ -3904,7 +3907,7 @@
         },
         {
           "name": "libpciaccess",
-          "build_hash": "lgcxikyma44jhx7g2trak7m2f3zu76tu",
+          "build_hash": "m2iv7b3u6rlfrbfffgbk4xiibgrp3jde",
           "type": [
             "build",
             "link"
@@ -3919,7 +3922,7 @@
         },
         {
           "name": "libxml2",
-          "build_hash": "qujafj5r5p2t5fldgjwha2grrsbuwxyh",
+          "build_hash": "gwwtfjdhq3seu3wfpu46b7r3n7kwaqnc",
           "type": [
             "build",
             "link"
@@ -3933,8 +3936,8 @@
           ]
         },
         {
-          "name": "pkgconf",
-          "build_hash": "ps5ctt4uh25iop3yl2jmsvuollo537yb",
+          "name": "pkg-config",
+          "build_hash": "3bxbx3int4u3se5aurwmlse3nv7pfknq",
           "type": [
             "build"
           ]
@@ -4001,7 +4004,7 @@
       },
       "hash": "plpgthkrjkireo54yxqjll3e2oejng5t"
     },
-    "rx7c5v7gcjyf34dl5bv6l7pag3tp6ctu": {
+    "jv6txh5xe6iefkvoibcoelj6f4vqh3ax": {
       "name": "hwloc",
       "version": "2.5.0",
       "arch": {
@@ -4067,7 +4070,7 @@
       "dependencies": [
         {
           "name": "libpciaccess",
-          "build_hash": "lgcxikyma44jhx7g2trak7m2f3zu76tu",
+          "build_hash": "m2iv7b3u6rlfrbfffgbk4xiibgrp3jde",
           "type": [
             "build",
             "link"
@@ -4075,7 +4078,7 @@
         },
         {
           "name": "libxml2",
-          "build_hash": "qujafj5r5p2t5fldgjwha2grrsbuwxyh",
+          "build_hash": "gwwtfjdhq3seu3wfpu46b7r3n7kwaqnc",
           "type": [
             "build",
             "link"
@@ -4090,8 +4093,8 @@
           ]
         },
         {
-          "name": "pkgconf",
-          "build_hash": "ps5ctt4uh25iop3yl2jmsvuollo537yb",
+          "name": "pkg-config",
+          "build_hash": "3bxbx3int4u3se5aurwmlse3nv7pfknq",
           "type": [
             "build"
           ]
@@ -4099,7 +4102,7 @@
       ],
       "hash": "ikelhqbk7p3sqciscois5nwdzmcvky2o"
     },
-    "lgcxikyma44jhx7g2trak7m2f3zu76tu": {
+    "m2iv7b3u6rlfrbfffgbk4xiibgrp3jde": {
       "name": "libpciaccess",
       "version": "0.16",
       "arch": {
@@ -4160,8 +4163,8 @@
           ]
         },
         {
-          "name": "pkgconf",
-          "build_hash": "ps5ctt4uh25iop3yl2jmsvuollo537yb",
+          "name": "pkg-config",
+          "build_hash": "3bxbx3int4u3se5aurwmlse3nv7pfknq",
           "type": [
             "build"
           ]
@@ -4230,7 +4233,7 @@
       },
       "hash": "wbcjuf3q2odox26srqtgbvh2c3yqdsiw"
     },
-    "2mygjuxawushjq6z5ttrgfvtfb3zx35r": {
+    "2b6d4cwstr7cx6g5pd5kd6exbj73bhu6": {
       "name": "ior",
       "version": "fix-pmdk",
       "arch": {
@@ -4316,7 +4319,7 @@
         },
         {
           "name": "mpich",
-          "build_hash": "qsl7diboefs4v2ygscbim3444gyzctwj",
+          "build_hash": "q3gbmti2bb6rjn4ysrzqkegsg2bb2tm7",
           "type": [
             "build",
             "link"
@@ -4401,7 +4404,7 @@
       ],
       "hash": "skcnvg65qhesqsn4rgmzpvxrvrwarhu3"
     },
-    "j4ux4x425ultl6jfyduniah6bmwwzpky": {
+    "yyvqumqwnhvv3teofsth6v2f22s4rx3i": {
       "name": "range-v3",
       "version": "0.11.0",
       "arch": {
@@ -4462,7 +4465,7 @@
       "dependencies": [
         {
           "name": "cmake",
-          "build_hash": "poezbwn5n44sbiq7yvgthnqngz5ocpdq",
+          "build_hash": "6hoo4gon7db5x6jalpjar3ndxuiorpkc",
           "type": [
             "build"
           ]
