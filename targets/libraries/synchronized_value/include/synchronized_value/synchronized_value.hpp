@@ -99,7 +99,8 @@ class SynchronizedValue {
   SynchronizedValue() = default;
   SynchronizedValue(value_type const& other) : value_(other) {}
   SynchronizedValue(value_type&& other) : value_(std::move(other)) {}
-  SynchronizedValue(SynchronizedValue const& other)
+  SynchronizedValue(SynchronizedValue const& other) requires
+      std::is_copy_constructible_v<value_type>  // C++20 :(
       : SynchronizedValue(other, std::lock_guard<mutex_type>(other.mutex_)) {}
   SynchronizedValue(SynchronizedValue&& other)
       : SynchronizedValue(std::move(other),

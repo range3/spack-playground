@@ -1,6 +1,7 @@
 #include <chrono>
 #include <cmath>
 #include <condition_variable>
+#include <memory>
 #include <mutex>
 #include <sstream>
 #include <thread>
@@ -133,7 +134,7 @@ TEST_CASE("synchronized_value") {
 
     std::thread producer{[&]() {
       size_t i;
-      for(i = 0; i < 1000; ++i) {
+      for (i = 0; i < 1000; ++i) {
         {
           auto uniq = counter.uniqueSynchronize();
           *uniq += 1;
@@ -151,5 +152,46 @@ TEST_CASE("synchronized_value") {
     }
 
     producer.join();
+  }
+
+  struct MyClass {
+    int x = 0;
+    int y = 0;
+    MyClass() = default;
+    MyClass(int xx, int yy) : x(xx), y(yy) {}
+    ~MyClass() { fmt::print("MyClass::~MyClass\n"); }
+  };
+
+  SUBCASE("with unique_ptr") {
+    synch<std::unique_ptr<MyClass>> my_class =
+        std::make_unique<MyClass>(10, 20);
+    auto proxy = my_class.synchronize();
+    CHECK((*proxy)->x == 10);
+    CHECK((*proxy)->y == 20);
+    proxy->reset();
+  }
+
+  SUBCASE("vector of synch") {
+    std::vector<synch<int>> vec;
+    vec.emplace_back(10);
+    vec.emplace_back(20);
+
+    CHECK(vec[0].get() == 10);
+    CHECK(vec[1].get() == 20);
+  }
+
+  SUBCASE("vector of synch<unique_ptr<T>>") {
+    std::vector<synch<std::unique_ptr<MyClass>>> vec;
+    vec.emplace_back(std::make_unique<MyClass>(20, 30));
+    vec.emplace_back(std::make_unique<MyClass>(100, 200));
+
+    auto [proxy0, proxy1] = range3::synchronize(vec[0], vec[1]);
+    CHECK((*proxy0)->x == 20);
+    CHECK((*proxy0)->y == 30);
+    CHECK((*proxy1)->x == 100);
+    CHECK((*proxy1)->y == 200);
+
+    CHECK(proxy0.owns_lock());
+    CHECK(proxy1.owns_lock());
   }
 }
