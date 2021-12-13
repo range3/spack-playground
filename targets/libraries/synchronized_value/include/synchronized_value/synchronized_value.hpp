@@ -1,8 +1,10 @@
-// (C) Copyright 2010 Just Software Solutions Ltd
-// http://www.justsoftwaresolutions.co.uk (C) Copyright 2012 Vicente J. Botet
-// Escriba (C) Copyright 2021 range3 ( https://github.com/range3 ) Distributed
-// under the Boost Software License, Version 1.0. (See accompanying file
-// LICENSE_1_0.txt or copy at http://www.boost.org/LICENSE_1_0.txt)
+// (C) Copyright 2010 Just Software Solutions Ltd http://www.justsoftwaresolutions.co.uk
+// (C) Copyright 2012 Vicente J. Botet Escriba
+// (C) Copyright 2021 range3 ( https://github.com/range3 )
+// Distributed under the Boost Software License, Version 1.0. (See
+// accompanying file LICENSE_1_0.txt or copy at
+// http://www.boost.org/LICENSE_1_0.txt)
+
 #ifndef RANGE3_SYNCHRONIZED_VALUE_HPP
 #define RANGE3_SYNCHRONIZED_VALUE_HPP
 
@@ -158,9 +160,7 @@ class SynchronizedValue {
   // LockGuardPtr is non-copyable and non-movable, but
   // C++17 guarantees prvalue copy elision. so it's legal.
   auto synchronize() -> LockGuardPtr { return {*this}; }
-  auto synchronize() const -> ConstLockGuardPtr {
-    return {*this};
-  }
+  auto synchronize() const -> ConstLockGuardPtr { return {*this}; }
   auto uniqueSynchronize() -> UniqueLockPtr { return {*this}; }
   auto uniqueSynchronize() const -> ConstUniqueLockPtr { return {*this}; }
 
