@@ -285,7 +285,7 @@ auto main(int argc, char* argv[]) -> int try {
   std::thread flusher_thread([&]() {
     BurstBuffer::Flusher flusher(bb);
     for (size_t i = 0; i < 1000; ++i) {
-      flusher.flushAll([&](ListNode&& node) {
+      flusher.flushAll([&](ListNode&&) {
         // fmt::print("flushing: ofs: {}, data: {}\n", node.offset(),
         //            std::string{node.sv()});
         return false;

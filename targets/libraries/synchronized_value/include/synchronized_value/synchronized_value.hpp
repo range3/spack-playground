@@ -27,8 +27,6 @@ class SynchronizedValue {
   class ConstLockGuardPtr : public std::lock_guard<mutex_type> {
    public:
     using synchronized_value_type = SynchronizedValue<value_type, mutex_type>;
-    using mutex_type = synchronized_value_type::mutex_type;
-    using value_type = synchronized_value_type::value_type;
 
     ConstLockGuardPtr(synchronized_value_type const& sync_value)
         : std::lock_guard<mutex_type>(sync_value.mutex_),
@@ -46,9 +44,7 @@ class SynchronizedValue {
   };
   class LockGuardPtr : public ConstLockGuardPtr {
    public:
-    using typename ConstLockGuardPtr::mutex_type;
     using typename ConstLockGuardPtr::synchronized_value_type;
-    using typename ConstLockGuardPtr::value_type;
 
     LockGuardPtr(synchronized_value_type& sync_value)
         : ConstLockGuardPtr(sync_value) {}
@@ -68,8 +64,6 @@ class SynchronizedValue {
 
    public:
     using synchronized_value_type = SynchronizedValue<value_type, mutex_type>;
-    using mutex_type = synchronized_value_type::mutex_type;
-    using value_type = synchronized_value_type::value_type;
 
     ConstUniqueLockPtr(synchronized_value_type const& sync_value)
         : base_type(sync_value.mutex_), value_(sync_value.value_){};
@@ -85,9 +79,7 @@ class SynchronizedValue {
   };
   class UniqueLockPtr : public ConstUniqueLockPtr {
    public:
-    using typename ConstUniqueLockPtr::mutex_type;
     using typename ConstUniqueLockPtr::synchronized_value_type;
-    using typename ConstUniqueLockPtr::value_type;
 
     UniqueLockPtr(synchronized_value_type& sync_value)
         : ConstUniqueLockPtr(sync_value) {}

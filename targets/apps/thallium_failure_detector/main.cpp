@@ -63,7 +63,7 @@ auto main(int argc, char** argv) -> int {
 
       my_engine
           .define("hb",
-                  [&](const tl::request& req) {
+                  [&](const tl::request&) {
                     std::scoped_lock<std::mutex> lock{mtx};
                     if (!received_first_heartbeat) {
                       received_first_heartbeat = true;

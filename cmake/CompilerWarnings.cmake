@@ -73,6 +73,7 @@ set(GCC_WARNINGS
     -Wlogical-op # warn about logical operations being used where bitwise were
                  # probably wanted
     -Wuseless-cast # warn if you perform a cast to the same type
+    -Wno-unknown-pragmas # because gcc can't ignore #pragma clang
 )
 
 if(MSVC)

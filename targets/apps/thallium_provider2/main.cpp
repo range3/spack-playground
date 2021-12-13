@@ -104,7 +104,7 @@ auto main(int argc, char** argv) -> int {
     // create a pointer to the provider instance using the factory methods.
     MySumProvider* my_provider1 = MySumProvider::create(my_engine, provider_id);
     MySumProvider* my_provider2 =
-        MySumProvider::create(my_engine, provider_id + 1);
+        MySumProvider::create(my_engine, static_cast<uint16_t>(provider_id + 1));
     ALL_UNUSED(my_provider1, my_provider2);
 
     my_engine.wait_for_finalize();

@@ -113,7 +113,7 @@ auto main(int argc, char* argv[]) -> int try {
   alloc_class_test.header_type = header == "compact" ? POBJ_HEADER_COMPACT : POBJ_HEADER_NONE;
   alloc_class_test.alignment = align;
 	alloc_class_test.unit_size = unit_size;
-	alloc_class_test.units_per_block = nunits;
+	alloc_class_test.units_per_block = static_cast<unsigned int>(nunits);
 	alloc_class_test.class_id = 0;
 
   alloc_class_test = pop.ctl_set("heap.alloc_class.new.desc", alloc_class_test);
