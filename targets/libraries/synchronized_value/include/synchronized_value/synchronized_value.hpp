@@ -224,17 +224,17 @@ class SynchronizedValue : public SynchronizedValueImpl<T, Lockable> {
 
 template <typename T, typename Lockable>
 class SynchronizedValue<T, Lockable, false>
-    : public SynchronizedValue<T, Lockable, true> {
+    : public SynchronizedValueImpl<T, Lockable> {
  public:
   using value_type = T;
   using mutex_type = Lockable;
 
   SynchronizedValue() = default;
   SynchronizedValue(value_type&& other)
-      : SynchronizedValue<T, Lockable, true>(std::move(other)) {}
+      : SynchronizedValueImpl<T, Lockable>(std::move(other)) {}
   SynchronizedValue(SynchronizedValue const& other) = delete;
   SynchronizedValue(SynchronizedValue&& other)
-      : SynchronizedValue<T, Lockable, true>(std::move(other)) {}
+      : SynchronizedValueImpl<T, Lockable>(std::move(other)) {}
 
   auto operator=(SynchronizedValue&& rhs) -> SynchronizedValue& {
     SynchronizedValueImpl<T, Lockable>::operator=(std::move(rhs));
